@@ -1,6 +1,6 @@
 <template>
     <div class="v-home">
-        首页asasas
+        首页sss
     </div>
 </template>
 
@@ -11,5 +11,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-
+.v-home {
+    font-size: 20px;
+}
 </style>

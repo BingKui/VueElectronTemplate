@@ -10,7 +10,7 @@ const mainConfig = {
     },
     output: {
         filename: '[name].js',
-        // libraryTarget: 'commonjs2',
+        libraryTarget: 'commonjs2',
         path: path.join(__dirname, '../dist/electron'),
     },
     module: {
@@ -42,6 +42,10 @@ const mainConfig = {
     ],
     resolve: {
         extensions: ['.js', '.json', '.node'],
+    },
+    node: {
+        __dirname: process.env.ENV !== 'prod',
+        __filename: process.env.ENV !== 'prod'
     },
 };
 

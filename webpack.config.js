@@ -26,14 +26,14 @@ const isProd = process.env.ENV = 'prod';
 let whiteListedModules = ['vue'];
 
 module.exports = {
-    target: 'electron-renderer',
+    // target: 'electron-renderer',
     devtool: 'cheap-module-eval-source-map',
     entry: {
         index: path.join(__dirname, './src/index.js'),
     },
     output: {
         filename: '[name].[hash:8].js',
-        path: path.resolve(__dirname, '../dist'),
+        path: path.resolve(__dirname, './dist'),
         chunkFilename: '[id].[hash:8].js'
     },
     // externals: [
@@ -220,8 +220,8 @@ module.exports = {
         //     beforeEmit: true, // 输出文件前清理干净
         // }),
         new VueLoaderPlugin(),
-        new ProgressBarPlugin(),
-        new FirendlyErrorePlugin(),
+        // new ProgressBarPlugin(),
+        // new FirendlyErrorePlugin(),
         new CopyWebpackPlugin([{
             from: path.resolve(__dirname, './public'),
             to: path.resolve(__dirname, './dist/reder'),
@@ -243,8 +243,8 @@ module.exports = {
         //     // 描述 vendor 动态链接库的文件内容
         //     manifest: require('./public/vendor/vendor.manifest.json')
         // }),
-        new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoEmitOnErrorsPlugin(),
+        // new webpack.HotModuleReplacementPlugin(),
+        // new webpack.NoEmitOnErrorsPlugin(),
     ],
     devServer: {
         contentBase: path.resolve(__dirname, './dist'),

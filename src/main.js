@@ -3,6 +3,8 @@ import {
     BrowserWindow
 } from 'electron' // eslint-disable-line
 
+const path = require('path');
+
 /**
  * Set `__static` path to static files in production
  * https://simulatedgreg.gitbooks.io/electron-vue/content/en/using-static-assets.html
@@ -13,7 +15,7 @@ import {
 // }
 
 let mainWindow;
-const winURL = process.env.NODE_ENV === 'development' ?
+const winURL = process.env.ENV === 'dev' ?
     'http://localhost:2333' :
     `file://${__dirname}/index.html`;
 
@@ -22,7 +24,7 @@ function createWindow() {
      * Initial window options
      */
     mainWindow = new BrowserWindow({
-        title: 'iTools',
+        title: 'VET',
         height: 700,
         width: 900,
         center: true, // 窗口默认居中
@@ -31,13 +33,15 @@ function createWindow() {
         skipTaskbar: true, // 任务栏显示
         useContentSize: false, // 不允许修改大小
         transparent: true, // 透明
-        frame: false, // 不使用框架
+        // frame: false, // 不使用框架
         // show: false, // 禁止显示
         fullscreenable: false,
         titleBarStyle: 'hidden',
         backgroundColor: 'none',
         webPreferences: {
             scrollBounce: false,
+            nodeIntegration: true,
+            // webSecurity: false,
         },
     });
 

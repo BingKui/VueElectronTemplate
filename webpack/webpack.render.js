@@ -25,7 +25,6 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 // 是否是正式环境
 const isProd = process.env.ENV = 'prod';
-let whiteListedModules = ['vue'];
 
 const renderConfig = {
     target: 'electron-renderer',
@@ -35,12 +34,9 @@ const renderConfig = {
     },
     output: {
         filename: '[name].[hash:8].js',
-        path: path.resolve(__dirname, '../dist'),
+        path: path.resolve(__dirname, '../dist/electron'),
         chunkFilename: '[id].[hash:8].js'
     },
-    externals: [
-        ...Object.keys(dependencies || {}).filter(d => !whiteListedModules.includes(d))
-    ],
     module: {
         rules: [
             {
@@ -49,9 +45,9 @@ const renderConfig = {
                 exclude: /node_modules/,
                 use: {
                     loader: 'eslint-loader',
-                    // options: {
-                    //     formatter: EslintFriendlyFormatter,
-                    // },
+                    options: {
+                        formatter: EslintFriendlyFormatter,
+                    },
                 },
             },
             {
@@ -181,7 +177,7 @@ const renderConfig = {
             new UglifyJsPlugin({ // 压缩js
                 uglifyOptions: {
                     compress: {
-                        warnings: false,
+                        // warnings: false,
                         drop_debugger: false,
                         drop_console: true
                     }
@@ -194,15 +190,11 @@ const renderConfig = {
             })
         ]
     },
+    node: {
+        __dirname: process.env.ENV !== 'prod',
+        __filename: process.env.ENV !== 'prod'
+    },
     plugins: [
-        // 自动清理 dist 文件夹
-        // new CleanWebpackPlugin(['../dist'], {
-        //     root: __dirname,
-        //     verbose: true, //开启在控制台输出信息
-        //     dry: false,
-        //     allowExternal: true, // 允许删除根目录下文件夹中的内容
-        //     beforeEmit: true, // 输出文件前清理干净
-        // }),
         new VueLoaderPlugin(),
         new ProgressBarPlugin(),
         new FirendlyErrorePlugin(),
@@ -214,9 +206,16 @@ const renderConfig = {
         new HTMLWebpackPlugin({
             title: 'VueElectronTemplate',
             filename: 'index.html',
-            template: path.resolve(__dirname, '../public/index.html'), // 模板文件，不同入口可以根据需要设置不同模板
+            template: path.resolve(__dirname, '../src/index.ejs'), // 模板文件，不同入口可以根据需要设置不同模板
             chunks: ['index', 'vendor', 'common'], // html文件中需要要引入的js模块，这里的 vendor 是webpack默认配置下抽离的公共模块的名称
+            minify: {
+                collapseWhitespace: true,
+                removeAttributeQuotes: true,
+                removeComments: true
+            },
             dateTime: (new Date()).getTime(),
+            nodeModules: process.env.ENV !== 'prod' ? path.resolve(__dirname, '../node_modules') : false,
+
         }),
         new MiniCssExtractPlugin({
             filename: isProd ? 'styles/[name].[hash:4].css' : 'styles/[name].[hash:8].css',
@@ -247,6 +246,15 @@ const renderConfig = {
 
 if (isProd) {
     renderConfig.devtool = '';
+    renderConfig.plugins.unshift(
+        // 自动清理 dist 文件夹
+        new CleanWebpackPlugin({
+            // root: __dirname,
+            verbose: true, //开启在控制台输出信息
+            dry: false,
+            beforeEmit: true, // 输出文件前清理干净
+        }),
+    );
     renderConfig.plugins.push(
         // new CopyWebpackPlugin([
         //     {

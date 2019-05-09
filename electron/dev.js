@@ -4,16 +4,14 @@ const chalk = require('chalk');
 const electron = require('electron');
 // 地址操作库
 const path = require('path');
-// const {
-//     say
-// } = require('cfonts')
+const { say } = require('cfonts');
 const spawn = require('cross-spawn');
 // webpack
 const webpack = require('webpack');
 // webpack-dev-server
 const WebpackDevServer = require('webpack-dev-server');
 // 热更新
-// const webpackHotMiddleware = require('webpack-hot-middleware');
+const webpackHotMiddleware = require('webpack-hot-middleware');
 
 // electron 主线程配置文件
 const mainConfig = require('../webpack/webpack.main');
@@ -27,7 +25,7 @@ let hotMiddleware;
 function logStats(proc, data) {
     let log = '';
 
-    log += chalk.yellow.bold(`┏ ${proc} Process ${new Array((19 - proc.length) + 1).join('-')}`);
+    log += chalk.green.bold(`┏ ${proc} Process ${new Array((19 - proc.length) + 1).join('-')}`);
     log += '\n\n';
 
     if (typeof data === 'object') {
@@ -41,64 +39,60 @@ function logStats(proc, data) {
         log += `  ${data}\n`;
     }
 
-    log += '\n' + chalk.yellow.bold(`┗ ${new Array(28 + 1).join('-')}`) + '\n';
+    log += '\n' + chalk.green.bold(`┗ ${new Array(28 + 1).join('-')}`) + '\n';
 
     console.log(log);
 }
 
 function startRenderer() {
     return new Promise((resolve, reject) => {
-        // rendererConfig.entry.renderer = [path.join(__dirname, 'dev-client')].concat(
-        //     rendererConfig.entry.renderer)
         // 设置模式为 dev
         rendererConfig.mode = 'development';
         const compiler = webpack(rendererConfig);
-        // hotMiddleware = webpackHotMiddleware(compiler, {
-        //     log: false,
-        //     heartbeat: 2500
-        // })
+        hotMiddleware = webpackHotMiddleware(compiler, {
+            log: false,
+            heartbeat: 2500
+        });
 
-        // compiler.hooks.compilation.tap('compilation', compilation => {
-        //     compilation.hooks.htmlWebpackPluginAfterEmit.tapAsync(
-        //         'html-webpack-plugin-after-emit', (data, cb) => {
-        //             // hotMiddleware.publish({
-        //             //     action: 'reload'
-        //             // });
-        //             cb();
-        //         });
-        // });
+        compiler.hooks.compilation.tap('compilation', compilation => {
+            compilation.hooks.htmlWebpackPluginAfterEmit.tapAsync(
+                'html-webpack-plugin-after-emit', (data, cb) => {
+                    hotMiddleware.publish({
+                        action: 'reload'
+                    });
+                    cb();
+                });
+        });
 
         compiler.hooks.done.tap('done', stats => {
             logStats('Renderer', stats);
         });
-        const server = new WebpackDevServer(
-            compiler, {
-                contentBase: path.join(__dirname, '../src'),
-                quiet: true,
-                before(app, ctx) {
-                    ctx.middleware.waitUntilValid(() => {
-                        resolve();
-                    });
-                }
+        const server = new WebpackDevServer(compiler, {
+            hot: true,
+            contentBase: path.join(__dirname, '../'),
+            quiet: true,
+            before(app, ctx) {
+                app.use(hotMiddleware);
+                ctx.middleware.waitUntilValid(() => {
+                    resolve();
+                });
             }
-        );
+        });
         server.listen(2333);
     });
 }
 
 function startMain() {
     return new Promise((resolve, reject) => {
-        // mainConfig.entry.main = [path.join(__dirname, '../src/main/index.dev.js')].concat(
-        //     mainConfig.entry.main)
         mainConfig.mode = 'development';
         webpack(mainConfig);
         const compiler = webpack(mainConfig);
 
         compiler.hooks.watchRun.tapAsync('watch-run', (compilation, done) => {
             logStats('Main', chalk.white.bold('主线程修改，打包中...'));
-            // hotMiddleware.publish({
-            //     action: 'compiling'
-            // })
+            hotMiddleware.publish({
+                action: 'compiling'
+            });
             done();
         });
 
@@ -142,7 +136,7 @@ function startElectron() {
     electronProcess = spawn(electron, args);
 
     electronProcess.stdout.on('data', data => {
-        electronLog(data, 'blue');
+        electronLog(data, 'green');
     });
     electronProcess.stderr.on('data', data => {
         electronLog(data, 'red');
@@ -170,26 +164,16 @@ function electronLog(data, color) {
     }
 }
 
-// function greeting() {
-//     const cols = process.stdout.columns
-//     let text = ''
-
-//     if (cols > 104) text = 'electron-vue'
-//     else if (cols > 76) text = 'electron-|vue'
-//     else text = false
-
-//     if (text) {
-//         say(text, {
-//             colors: ['yellow'],
-//             font: 'simple3d',
-//             space: false
-//         })
-//     } else console.log(chalk.yellow.bold('\n  electron-vue'))
-//     console.log(chalk.blue('  getting ready...') + '\n')
-// }
+function greeting () {
+    say('VET Dev', {
+        colors: ['#0F0'],
+        font: 'simple',
+        space: true,
+    });
+}
 
 function init() {
-    // greeting()
+    greeting()
 
     Promise.all([startRenderer(), startMain()])
         .then(() => {

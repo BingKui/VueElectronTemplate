@@ -59,3 +59,14 @@ typings/
 
 # next.js build output
 .next
+
+build/*
+!build/icons
+
+.DS_Store
+dist/electron/*
+dist/web/*
+build/*
+!build/icons
+thumbs.db
+!.gitkeep
