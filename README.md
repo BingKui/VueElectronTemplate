@@ -2,19 +2,42 @@
 
 一个用来开发客户端的模板。
 
-## 依赖库
+## 前言
 
-- clean-webpack-plugin：清理文件
-- progress-bar-webpack-plugin：打包进度展示
-- webpack-build-notifier：打包结果提示
-- html-webpack-plugin：页面生成
-- mini-css-extract-plugin：抽离css
-- uglifyjs-webpack-plugin：压缩代码
-- optimize-css-assets-webpack-plugin：压缩css
-- friendly-errors-webpack-plugin：友好的展示 webpack 的错误和警告
-- happypack：多线程打包
-- splitChunks：webpack内置插件，拆分chunk
-- DllPlugin：webpack内置插件，预打包
-- DllReferencePlugin：webpack内置插件，将预先编译好的模块关联到当前编译中
-- HotModuleReplacementPlugin：webpack内置插件，局部刷新
-- chalk：命令行工具
+为了更好的学习使用 Electron 开发桌面端客户端，特搭建此项目，作为开发项目的基础框架。
+
+本项目借鉴自 [electron-vue](https://github.com/SimulatedGREG/electron-vue)。
+
+## 环境
+
+Vue 2 + Vue-Router + Vuex + Electron@5 + Webpack 4
+
+## 项目依赖环境
+
+- nodejs: v10.10.0
+- electron: v5.0.1
+- vue: v2.6.10
+- vuex: v3.1.1
+- vue-router: v3.0.6
+
+## 开发
+
+```bash
+# 拉取项目
+git clone https://github.com/BingKui/VueElectronTemplate
+# 安装依赖
+cd VueElectronTemplate
+npm install
+# 运行开发环境
+npm run dev
+```
+
+## 计划
+
+- [ ] 增加菜单
+- [ ] 增加配置项
+
+## 项目自带组件
+
+- ScrollBar: 自定义滚动条组件
+- MouseRight: 右键菜单组件
