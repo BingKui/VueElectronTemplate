@@ -64,8 +64,7 @@ build/*
 !build/icons
 
 .DS_Store
-dist/electron/*
-dist/web/*
+dist/*
 build/*
 !build/icons
 thumbs.db

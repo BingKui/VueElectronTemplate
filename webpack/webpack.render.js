@@ -1,9 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
-const { dependencies } = require('../package.json');
+const pkg = require('../package.json');
 // 插件
-// eslit 友好格式化插件
-const EslintFriendlyFormatter = require('eslint-friendly-formatter');
 // html 插件
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 // vue loader 插件
@@ -24,10 +22,11 @@ const FirendlyErrorePlugin = require('friendly-errors-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 // 是否是正式环境
-const isProd = process.env.ENV = 'prod';
+const isProd = process.env.ENV === 'prod';
 
 const renderConfig = {
     target: 'electron-renderer',
+    mode: isProd ? 'production' : 'development',
     devtool: 'cheap-module-eval-source-map',
     entry: {
         index: path.join(__dirname, '../src/index.js'),
@@ -39,17 +38,6 @@ const renderConfig = {
     },
     module: {
         rules: [
-            {
-                test: /\.(js|vue)$/,
-                enforce: 'pre',
-                exclude: /node_modules/,
-                use: {
-                    loader: 'eslint-loader',
-                    options: {
-                        formatter: EslintFriendlyFormatter,
-                    },
-                },
-            },
             {
                 test: /\.vue$/, // 处理vue模块
                 use: [{
@@ -177,7 +165,7 @@ const renderConfig = {
             new UglifyJsPlugin({ // 压缩js
                 uglifyOptions: {
                     compress: {
-                        // warnings: false,
+                        warnings: false,
                         drop_debugger: false,
                         drop_console: true
                     }
@@ -198,13 +186,8 @@ const renderConfig = {
         new VueLoaderPlugin(),
         new ProgressBarPlugin(),
         new FirendlyErrorePlugin(),
-        new CopyWebpackPlugin([{
-            from: path.resolve(__dirname, '../public'),
-            to: path.resolve(__dirname, '../dist'),
-            ignore: ['*.html']
-        }, ]),
         new HTMLWebpackPlugin({
-            title: 'VueElectronTemplate',
+            title: pkg.build.productName,
             filename: 'index.html',
             template: path.resolve(__dirname, '../src/index.ejs'), // 模板文件，不同入口可以根据需要设置不同模板
             chunks: ['index', 'vendor', 'common'], // html文件中需要要引入的js模块，这里的 vendor 是webpack默认配置下抽离的公共模块的名称
@@ -229,19 +212,6 @@ const renderConfig = {
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoEmitOnErrorsPlugin(),
     ],
-    devServer: {
-        contentBase: path.resolve(__dirname, '../dist'),
-        host: 'localhost',
-        port: 2333,
-        historyApiFallback: true,
-        overlay: { //当出现编译器错误或警告时，就在网页上显示一层黑色的背景层和错误信息
-            errors: true,
-            warnings: true,
-        },
-        inline: true,
-        open: false,
-        hot: true
-    },
 };
 
 if (isProd) {
@@ -256,15 +226,15 @@ if (isProd) {
         }),
     );
     renderConfig.plugins.push(
-        // new CopyWebpackPlugin([
-        //     {
-        //         from: path.join(__dirname, '../src/assets'),
-        //         to: path.join(__dirname, '../dist/electron/assets'),
-        //         ignore: ['.*']
-        //     }
-        // ]),
+        new CopyWebpackPlugin([
+            {
+                from: path.join(__dirname, '../src/assets'),
+                to: path.join(__dirname, '../dist/electron/assets'),
+                ignore: ['.*']
+            }
+        ]),
         new webpack.DefinePlugin({
-            'process.env.NODE_ENV': '"prod"'
+            'process.env.ENV': '"prod"'
         }),
         new webpack.LoaderOptionsPlugin({
             minimize: true
@@ -273,7 +243,7 @@ if (isProd) {
 } else {
     renderConfig.plugins.push(
         new webpack.DefinePlugin({
-            'process.env.NODE_ENV': '"dev"'
+            'process.env.ENV': '"dev"'
         }),
     );
 }

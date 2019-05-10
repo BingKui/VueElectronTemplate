@@ -5,7 +5,6 @@ process.env.ENV = 'prod';
 const { say } = require('cfonts');
 const chalk = require('chalk');
 const del = require('del');
-const spawn = require('cross-spawn');
 // webpack
 const webpack = require('webpack');
 // loading
@@ -43,7 +42,7 @@ function build () {
 
     del.sync(['dist/electron/*', '!.gitkeep']);
 
-    const tasks = ['main', 'renderer'];
+    const tasks = ['main', 'render'];
     const m = new Multispinner(tasks, {
         preText: 'building',
         postText: 'process'
@@ -70,9 +69,9 @@ function build () {
 
     pack(rendererConfig).then(result => {
         results += result + '\n\n';
-        m.success('renderer');
+        m.success('render');
     }).catch(err => {
-        m.error('renderer');
+        m.error('render');
         console.log(`\n  ${errorLog} 渲染进程打包失败`);
         console.error(`\n${err}\n`);
         process.exit(1);

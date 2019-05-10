@@ -1,7 +1,5 @@
 const path = require('path');
 const webpack = require('webpack');
-// eslit 友好格式化插件
-const EslintFriendlyFormatter = require('eslint-friendly-formatter');
 
 const mainConfig = {
     target: 'electron-main',
@@ -17,13 +15,14 @@ const mainConfig = {
         rules: [
             {
                 test: /\.(js)$/,
-                enforce: 'pre',
+                enforce: 'pre', // 强制先进行 ESLint 检查
                 exclude: /node_modules/,
-                use: {
-                    loader: 'eslint-loader',
-                    options: {
-                        formatter: EslintFriendlyFormatter,
-                    }
+                loader: 'eslint-loader',
+                options: {
+                    // 启用自动修复
+                    fix: true,
+                    // 启用警告信息
+                    emitWarning: true,
                 }
             },
             {

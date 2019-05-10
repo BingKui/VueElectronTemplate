@@ -46,8 +46,6 @@ function logStats(proc, data) {
 
 function startRenderer() {
     return new Promise((resolve, reject) => {
-        // 设置模式为 dev
-        rendererConfig.mode = 'development';
         const compiler = webpack(rendererConfig);
         hotMiddleware = webpackHotMiddleware(compiler, {
             log: false,
@@ -68,15 +66,16 @@ function startRenderer() {
             logStats('Renderer', stats);
         });
         const server = new WebpackDevServer(compiler, {
-            hot: true,
-            contentBase: path.join(__dirname, '../'),
             quiet: true,
             before(app, ctx) {
                 app.use(hotMiddleware);
                 ctx.middleware.waitUntilValid(() => {
                     resolve();
                 });
-            }
+            },
+            contentBase: path.resolve(__dirname, '../dist'),
+            open: false,
+            hot: true,
         });
         server.listen(2333);
     });
@@ -85,11 +84,10 @@ function startRenderer() {
 function startMain() {
     return new Promise((resolve, reject) => {
         mainConfig.mode = 'development';
-        webpack(mainConfig);
         const compiler = webpack(mainConfig);
 
         compiler.hooks.watchRun.tapAsync('watch-run', (compilation, done) => {
-            logStats('Main', chalk.white.bold('主线程修改，打包中...'));
+            logStats('Main', chalk.white.bold('主线程打包中...'));
             hotMiddleware.publish({
                 action: 'compiling'
             });
@@ -122,8 +120,10 @@ function startMain() {
 
 function startElectron() {
     var args = [
+        'ENV=dev',
+        electron,
         '--inspect=5858',
-        path.join(__dirname, '../dist/electron/main.js')
+        path.join(__dirname, '../dist/electron/main.js'),
     ];
 
     // detect yarn or npm and process commandline args accordingly
@@ -133,7 +133,7 @@ function startElectron() {
         args = args.concat(process.argv.slice(2));
     }
 
-    electronProcess = spawn(electron, args);
+    electronProcess = spawn('cross-env', args);
 
     electronProcess.stdout.on('data', data => {
         electronLog(data, 'green');
@@ -173,8 +173,7 @@ function greeting () {
 }
 
 function init() {
-    greeting()
-
+    greeting();
     Promise.all([startRenderer(), startMain()])
         .then(() => {
             startElectron();

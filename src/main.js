@@ -13,11 +13,8 @@ const path = require('path');
 //     global.__static = require('path').join(__dirname, '/static').replace(/\\/g,
 //         '\\\\') // eslint-disable-line
 // }
-
 let mainWindow;
-const winURL = process.env.ENV === 'dev' ?
-    'http://localhost:2333' :
-    `file://${__dirname}/index.html`;
+const winURL = process.env.ENV === 'dev' ? 'http://localhost:2333' : `file://${__dirname}/index.html`;
 
 function createWindow() {
     /**
@@ -28,16 +25,16 @@ function createWindow() {
         height: 700,
         width: 900,
         center: true, // 窗口默认居中
-        resizable: false, // 不可修改窗口大小
-        maximizable: false, // 不存在最大化
-        skipTaskbar: true, // 任务栏显示
-        useContentSize: false, // 不允许修改大小
-        transparent: true, // 透明
-        // frame: false, // 不使用框架
-        // show: false, // 禁止显示
-        fullscreenable: false,
-        titleBarStyle: 'hidden',
-        backgroundColor: 'none',
+        // resizable: false, // 不可修改窗口大小
+        // maximizable: false, // 不存在最大化
+        // skipTaskbar: true, // 任务栏显示
+        // useContentSize: false, // 不允许修改大小
+        // transparent: true, // 透明
+        // // frame: false, // 不使用框架
+        // // show: false, // 禁止显示
+        // fullscreenable: false,
+        // titleBarStyle: 'hidden',
+        // backgroundColor: 'none',
         webPreferences: {
             scrollBounce: false,
             nodeIntegration: true,
