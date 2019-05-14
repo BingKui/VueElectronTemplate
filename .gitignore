@@ -64,8 +64,9 @@ build/*
 !build/icons
 
 .DS_Store
-dist/*
+
 build/*
 !build/icons
 thumbs.db
 !.gitkeep
+dist/
