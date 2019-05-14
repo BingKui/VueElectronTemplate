@@ -18,6 +18,8 @@ const mainConfig = require('../webpack/webpack.main');
 // 页面配置文件
 const rendererConfig = require('../webpack/webpack.render');
 
+const { port } = require('./config');
+
 let electronProcess = null;
 let manualRestart = false;
 let hotMiddleware;
@@ -77,7 +79,7 @@ function startRenderer() {
             open: false,
             hot: true,
         });
-        server.listen(2333);
+        server.listen(port);
     });
 }
 

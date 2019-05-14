@@ -134,7 +134,7 @@ const renderConfig = {
             '@styles': path.resolve(__dirname, '../src/styles'),
             '@store': path.resolve(__dirname, '../src/store'),
             '@router': path.resolve(__dirname, '../src/router'),
-            '@assets': path.resolve(__dirname, '../src/assets/'),
+            '@assets': path.resolve(__dirname, '../src/assets'),
             '@common': path.resolve(__dirname, '../src/common'),
             '@views': path.resolve(__dirname, '../src/views'),
             '@mock': path.resolve(__dirname, '../src/mock'),
