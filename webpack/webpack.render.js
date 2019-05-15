@@ -104,6 +104,7 @@ const renderConfig = {
                     loader: 'url-loader',
                     query: {
                         limit: 10000,
+                        publicPath: '../',
                         name: 'img/[name]-[folder].[ext]'
                     }
                 }
@@ -122,6 +123,7 @@ const renderConfig = {
                     loader: 'url-loader',
                     query: {
                         limit: 10000,
+                        publicPath: '../',
                         name: 'fonts/[name]-[folder].[ext]'
                     }
                 }
@@ -165,7 +167,6 @@ const renderConfig = {
             new UglifyJsPlugin({ // 压缩js
                 uglifyOptions: {
                     compress: {
-                        warnings: false,
                         drop_debugger: false,
                         drop_console: true
                     }
