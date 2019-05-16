@@ -27,6 +27,11 @@
             </MouseRight>
             <div class="v-title">加载文件内容</div>
             <div class="v-container">{{fileText}}</div>
+            <div class="v-title">系统通知</div>
+            <div class="v-container">
+                <button @click="openNotic">普通通知</button>
+                <button @click="openLinkNotic">添加链接的通知</button>
+            </div>
         </ScrollBar>
     </div>
 </template>
@@ -35,6 +40,7 @@
 import ScrollBar from '@components/ScrollBar';
 import MouseRight from '@components/MouseRight';
 import { loadMarkdownFile } from '@common/utils';
+import { Notic } from '@common/common';
 export default {
     name: 'Home',
     components: {
@@ -60,6 +66,14 @@ export default {
             },
             fileText: loadMarkdownFile('test'),
         };
+    },
+    methods: {
+        openNotic() {
+            Notic('普通通知', '这是一个普通的通知!这是一个普通的通知!这是一个普通的通知!这是一个普通的通知!这是一个普通的通知!这是一个普通的通知!这是一个普通的通知!');
+        },
+        openLinkNotic() {
+            Notic('链接通知', '这是一个带链接的通知', 'https://www.uiseed.cn');
+        },
     },
 };
 </script>

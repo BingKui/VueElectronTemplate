@@ -1,8 +1,5 @@
-import {
-    app,
-    BrowserWindow
-} from 'electron' // eslint-disable-line
-
+import { app, BrowserWindow } from 'electron' // eslint-disable-line
+import { Notic } from './electron.js';
 const { port, host } = require('../electron/config');
 
 /**
@@ -47,6 +44,7 @@ function createWindow() {
     mainWindow.on('closed', () => {
         mainWindow = null;
     });
+    Notic('主进程提示', '打开成功');
 }
 
 app.on('ready', createWindow);

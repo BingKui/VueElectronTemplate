@@ -141,6 +141,8 @@ const renderConfig = {
             '@views': path.resolve(__dirname, '../src/views'),
             '@mock': path.resolve(__dirname, '../src/mock'),
             '@constants': path.resolve(__dirname, '../src/constants'),
+            '@node': path.resolve(__dirname, '../src/node.js'),
+            '@electron': path.resolve(__dirname, '../src/electron.js'),
         },
         extensions: ['*', '.less', '.css', '.js', '.vue']
     },
