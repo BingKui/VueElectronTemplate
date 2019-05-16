@@ -32,6 +32,11 @@
                 <button @click="openNotic">普通通知</button>
                 <button @click="openLinkNotic">添加链接的通知</button>
             </div>
+            <div class="v-title">粘贴板操作</div>
+            <div class="v-container">
+                <div id="copy-text">点击下方复制按钮，即可复制这段文字。</div>
+                <button @click="copyText">复制</button>
+            </div>
         </ScrollBar>
     </div>
 </template>
@@ -40,7 +45,7 @@
 import ScrollBar from '@components/ScrollBar';
 import MouseRight from '@components/MouseRight';
 import { loadMarkdownFile } from '@common/utils';
-import { Notic } from '@common/common';
+import { Notic, Copy } from '@common/common';
 export default {
     name: 'Home',
     components: {
@@ -73,6 +78,9 @@ export default {
         },
         openLinkNotic() {
             Notic('链接通知', '这是一个带链接的通知', 'https://www.uiseed.cn');
+        },
+        copyText() {
+            Copy(document.querySelector('#copy-text').innerHTML);
         },
     },
 };

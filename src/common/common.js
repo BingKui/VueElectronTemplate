@@ -1,6 +1,6 @@
 // 与系统层相关的操作方法集合
 // 方便在渲染进程调用时与其他工具类方法区分，本文件中的犯法全部采用首字母大写的驼峰命名
-import { shell } from 'electron';
+import { shell, clipboard } from 'electron';
 /**
  * 渲染进程调用系统通知
  * @param {String} title 通知标题
@@ -24,4 +24,12 @@ export const Notic = (title, body, href='') => {
     _n.onclick= function(){
         _content.href && shell.openExternal(_content.href);
     };
+};
+
+/**
+ * 复制内容到粘贴板
+ * @param {String} text 需要复制的内容
+ */
+export const Copy = (text) => {
+    clipboard.writeText(text);
 };
