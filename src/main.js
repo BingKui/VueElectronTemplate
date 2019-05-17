@@ -1,5 +1,6 @@
 import { app, BrowserWindow } from 'electron' // eslint-disable-line
-import { Notic } from './electron.js';
+import { Notic, AddShortcuts } from './electron.js';
+import { FUNCTION_KEY, LETTER_KEY } from './constants/shortcuts';
 const { port, host } = require('../electron/config');
 
 /**
@@ -45,6 +46,10 @@ function createWindow() {
         mainWindow = null;
     });
     Notic('主进程提示', '打开成功');
+    // 添加快捷键
+    AddShortcuts(`${FUNCTION_KEY[4]}+${FUNCTION_KEY[9]}+${LETTER_KEY[25]}`, () => {
+        Notic('快捷键提示', '绑定快捷键成功');
+    });
 }
 
 app.on('ready', createWindow);

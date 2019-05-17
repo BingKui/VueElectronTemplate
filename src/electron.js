@@ -1,5 +1,5 @@
 // electron 相关的原生方法封装
-import { Notification } from 'electron';
+import { Notification, globalShortcut } from 'electron';
 
 // 主进程中的通知，只能在主进程中使用
 const Notic = (title, body) => {
@@ -16,6 +16,16 @@ const Notic = (title, body) => {
     _n.show();
 };
 
+/**
+ * 添加系统快捷键，建议使用 constants 中的枚举值
+ * @param {String} key 快捷键组合
+ * @param {Function} action 快捷键的操作函数
+ */
+const AddShortcuts = (key, action) => {
+    globalShortcut.register(key, action);
+};
+
 module.exports = {
     Notic,
+    AddShortcuts,
 };
