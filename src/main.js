@@ -1,12 +1,8 @@
 import { app, BrowserWindow } from 'electron' // eslint-disable-line
-import { Notic, AddShortcuts } from './electron.js';
+import { Notic, AddShortcuts, AddMenuList } from './electron.js';
 import { FUNCTION_KEY, LETTER_KEY } from './constants/shortcuts';
 const { port, host } = require('../electron/config');
 
-/**
- * Set `__static` path to static files in production
- * https://simulatedgreg.gitbooks.io/electron-vue/content/en/using-static-assets.html
- */
 if (process.env.NODE_ENV !== 'development') {
     global.__static = require('path').join(__dirname, '/static').replace(/\\/g, '\\\\') // eslint-disable-line
 }
@@ -50,6 +46,7 @@ function createWindow() {
     AddShortcuts(`${FUNCTION_KEY[4]}+${FUNCTION_KEY[9]}+${LETTER_KEY[25]}`, () => {
         Notic('快捷键提示', '绑定快捷键成功');
     });
+    AddMenuList();
 }
 
 app.on('ready', createWindow);
@@ -65,23 +62,3 @@ app.on('activate', () => {
         createWindow();
     }
 });
-
-/**
- * Auto Updater
- *
- * Uncomment the following code below and install `electron-updater` to
- * support auto updating. Code Signing with a valid certificate is required.
- * https://simulatedgreg.gitbooks.io/electron-vue/content/en/using-electron-builder.html#auto-updating
- */
-
-/*
-import { autoUpdater } from 'electron-updater'
-
-autoUpdater.on('update-downloaded', () => {
-  autoUpdater.quitAndInstall()
-})
-
-app.on('ready', () => {
-  if (process.env.NODE_ENV === 'production') autoUpdater.checkForUpdates()
-})
- */
