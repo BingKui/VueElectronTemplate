@@ -1,5 +1,5 @@
 import { app, BrowserWindow } from 'electron' // eslint-disable-line
-import { Notic, AddShortcuts, AddMenuList } from './electron.js';
+import { Notic, AddShortcuts, AddMenuList, AddDataBase } from './electron';
 import { FUNCTION_KEY, LETTER_KEY } from './constants/shortcuts';
 const { port, host } = require('../electron/config');
 
@@ -30,6 +30,7 @@ function createWindow() {
         // titleBarStyle: 'hidden',
         // backgroundColor: 'none',
         webPreferences: {
+            devTools: true,
             scrollBounce: false,
             nodeIntegration: true,
             // webSecurity: false,
@@ -47,6 +48,8 @@ function createWindow() {
         Notic('快捷键提示', '绑定快捷键成功');
     });
     AddMenuList();
+    // 添加数据库
+    AddDataBase('test');
 }
 
 app.on('ready', createWindow);

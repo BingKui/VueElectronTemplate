@@ -1,5 +1,7 @@
 // electron 相关的原生方法封装
-import { app, Notification, globalShortcut, Menu } from 'electron';
+import { app, Notification, globalShortcut, Menu, ipcMain } from 'electron';
+import path from 'path';
+import Datastore from 'nedb';
 
 // 主进程中的通知，只能在主进程中使用
 const Notic = (title, body) => {
@@ -44,8 +46,61 @@ const AddMenuList = (menuList=[]) => {
     Menu.setApplicationMenu(menu);
 };
 
+/**
+ * 添加本地数据库
+ * @param {String} name 数据库名称
+ */
+const AddDataBase = (name) => {
+    const db = new Datastore({
+        filename: path.join(app.getPath('userData'), `${name}.db`), // 数据文件
+        autoload: true, // 自动加载
+    });
+    // 添加数据库的增删改查基本方法监听，监听方式 ‘name-type’
+    ipcMain.on(`${name}-add`, (event, item) => {
+        db.insert(item, (err, newDoc) => {
+            if (err) {
+                event.sender.send(`${name}-add-result`, false);
+            }
+            event.sender.send(`${name}-add-result`, newDoc);
+        });
+    });
+    ipcMain.on(`${name}-del`, (event, id) => {
+        db.remove({ _id: id }, {}, (err, numRemoved) => {
+            if (err) {
+                event.sender.send(`${name}-del-result`, false);
+            }
+            event.sender.send(`${name}-del-result`, true);
+        });
+    });
+    ipcMain.on(`${name}-update`, (event, condition, value) => {
+        db.update(condition, value, {}, (err, newDoc) => {
+            if (err) {
+                event.sender.send(`${name}-update-result`, false);
+            }
+            event.sender.send(`${name}-update-result`, true);
+        });
+    });
+    ipcMain.on(`${name}-find-all`, (event) => {
+        db.find({}, (err, docs) => {
+            if (err) {
+                event.sender.send(`${name}-find-all-result`, false);
+            }
+            event.sender.send(`${name}-find-all-result`, docs);
+        });
+    });
+    ipcMain.on(`${name}-find`, (event, item, condition) => {
+        db.find(item, condition, (err, docs) => {
+            if (err) {
+                event.sender.send(`${name}-find-all-result`, false);
+            }
+            event.sender.send(`${name}-find-all-result`, docs);
+        });
+    });
+};
+
 module.exports = {
     Notic,
     AddShortcuts,
     AddMenuList,
+    AddDataBase,
 };

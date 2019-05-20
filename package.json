@@ -28,7 +28,7 @@
     "productName": "Vet",
     "appId": "com.vet.template",
     "directories": {
-      "output": "build"
+      "output": "dist"
     },
     "files": [
       "dist/electron/**/*"
@@ -59,6 +59,7 @@
     }
   },
   "dependencies": {
+    "nedb": "^1.8.0",
     "v-contextmenu": "^2.8.0",
     "vue": "^2.6.10",
     "vue-router": "^3.0.6",

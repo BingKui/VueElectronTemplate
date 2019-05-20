@@ -37,6 +37,15 @@
                 <div id="copy-text">点击下方复制按钮，即可复制这段文字。</div>
                 <button @click="copyText">复制</button>
             </div>
+            <div class="v-title">粘贴板操作</div>
+            <div class="v-container">
+                <button @click="getDataList">获取本地数据</button>
+                <div class="data-list-item" v-for="item in dataList" :key="item._id">
+                    <span>{{item.name}}: {{item.value}}</span>
+                    <button @click="() => delDataItem(item._id)">删除</button>
+                </div>
+                <button @click="addDataItem">添加一条记录</button>
+            </div>
         </ScrollBar>
     </div>
 </template>
@@ -46,6 +55,7 @@ import ScrollBar from '@components/ScrollBar';
 import MouseRight from '@components/MouseRight';
 import { loadMarkdownFile } from '@common/utils';
 import { Notic, Copy } from '@common/common';
+import { addItem, getAllItems, delItem } from '@common/db';
 export default {
     name: 'Home',
     components: {
@@ -70,6 +80,7 @@ export default {
                 text: '1',
             },
             fileText: loadMarkdownFile('test'),
+            dataList: [],
         };
     },
     methods: {
@@ -81,6 +92,20 @@ export default {
         },
         copyText() {
             Copy(document.querySelector('#copy-text').innerHTML);
+        },
+        async getDataList() {
+            this.dataList = await getAllItems('test');
+        },
+        async addDataItem() {
+            await addItem('test', {
+                name: '111',
+                value: 100,
+            });
+            await this.getDataList();
+        },
+        async delDataItem(id) {
+            await delItem('test', id);
+            await this.getDataList();
         },
     },
 };
@@ -115,7 +140,6 @@ export default {
     }
     .right-mouse-el {
         .m(@gap-md);
-        width: 100%;
         .p(@gap);
         .flex-row-center();
         background-color: @gray;
