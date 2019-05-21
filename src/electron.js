@@ -73,7 +73,7 @@ const AddDataBase = (name) => {
         });
     });
     ipcMain.on(`${name}-update`, (event, condition, value) => {
-        db.update(condition, value, {}, (err, newDoc) => {
+        db.update(condition, { $set: value }, (err, newDoc) => {
             if (err) {
                 event.sender.send(`${name}-update-result`, false);
             }
