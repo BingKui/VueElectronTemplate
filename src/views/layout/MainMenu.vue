@@ -35,6 +35,9 @@ export default {
             };
         },
     },
+    mounted() {
+        this.menuIndex = this.getDefaultIndex();
+    },
     data() {
         return {
             MenuData: MenuList,
@@ -47,6 +50,23 @@ export default {
             const router = MenuList[arr[0]].menuList[arr[1]].router;
             this.$router.push(`/${router}`);
         },
+        getDefaultIndex() {
+            const { name } = this.$route;
+            let g_index = 0;
+            let i_index = 0;
+            for (let i = 0; i < MenuList.length; i++) {
+                const arr = MenuList[i].menuList;
+                for (let j = 0; j < arr.length; j++) {
+                    const item = arr[j];
+                    if (name === item.router) {
+                        g_index = i;
+                        i_index = j;
+                        break;
+                    }
+                }
+            }
+            return `${g_index}-${i_index}`;
+        },
     },
 };
 </script>
@@ -55,6 +75,7 @@ export default {
 .v-main-menu-container {
     height: 100vh;
     -webkit-app-region: drag;
+    overflow: hidden;
     .main-scroll {
         .p-t(20px);
         height: calc(100vh - 20px);
