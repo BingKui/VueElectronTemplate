@@ -49,7 +49,7 @@ export default {
     -webkit-app-region: drag;
     .main-scroll {
         .p-t(20px);
-        height: calc(100vh - 20px);
+        height: 100vh;
         position: relative;
         &::after {
             content: '';
