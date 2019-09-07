@@ -1,6 +1,6 @@
 <template>
     <div class="v-mouse-right-demo">
-        <Divider orientation="left">右键菜单</Divider>
+        <Divider content-position="left">右键菜单</Divider>
         <MouseRight class="right-mouse-el" :mouseData="mouseData" :mouseKey="value">
             <Card>右键点击</Card>
         </MouseRight>
@@ -8,9 +8,9 @@
 </template>
 
 <script>
-import { Divider, Card } from 'iview';
+import { Divider, Card } from 'element-ui';
 import MouseRight from '@components/MouseRight';
-import { TipSuccess, TipError, TipWarning, TipLoading } from '@common/tip';
+import { TipSuccess, TipError, TipWarning, TipInfo } from '@common/tip';
 import logger from '@common/logger';
 export default {
     name: 'MouseRightDemo', // 右键菜单
@@ -40,9 +40,9 @@ export default {
                     logger.warn(JSON.stringify(val));
                 },
             }, {
-                text: 'loading',
+                text: 'info',
                 action: (val) => {
-                    TipLoading('你点击了加载！');
+                    TipInfo('你点击了info！');
                     logger.info(JSON.stringify(val));
                 },
             }],

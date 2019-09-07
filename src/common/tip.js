@@ -1,24 +1,32 @@
-import { Message } from 'iview';
+import { Message } from 'element-ui';
 
-Message.config({
+const baseConfig = {
     top: 25,
-    duration: 3
-});
-
+    duration: 3000,
+};
+export const TipInfo = (text='提示') => {
+    Message.info({
+        message: text,
+        ...baseConfig,
+    });
+};
 export const TipSuccess = (text='成功') => {
-    Message.success(text);
+    Message.success({
+        message: text,
+        ...baseConfig,
+    });
 };
 
 export const TipError = (text='错误') => {
-    Message.error(text);
+    Message.error({
+        message: text,
+        ...baseConfig,
+    });
 };
 
 export const TipWarning = (text='警告') => {
-    Message.warning(text);
-};
-
-export const TipLoading = (text='加载中...') => {
-    Message.loading({
-        content: text,
+    Message.warning({
+        message: text,
+        ...baseConfig,
     });
 };

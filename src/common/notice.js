@@ -1,41 +1,45 @@
-import { Notice } from 'iview';
+import { Notification } from 'element-ui';
 import { shell } from 'electron';
 
 const baseConfig = {
-    top: 20,
-    duration: 3,
+    offset: 20,
+    duration: 3000,
 };
-Notice.config(baseConfig);
 export const NoticeLocal = {
     open: (title, desc) => {
-        Notice.open({
+        Notification({
+            ...baseConfig,
             title,
-            desc,
+            message: desc,
         });
     },
     info: (title, desc) => {
-        Notice.info({
+        Notification.info({
+            ...baseConfig,
             title,
-            desc,
+            message: desc,
         });
     },
     success: (title, desc) => {
-        Notice.success({
+        Notification.success({
+            ...baseConfig,
             title,
-            desc,
+            message: desc,
         });
 
     },
     error: (title, desc) => {
-        Notice.error({
+        Notification.error({
+            ...baseConfig,
             title,
-            desc,
+            message: desc,
         });
     },
     warn: (title, desc) => {
-        Notice.warning({
+        Notification.warning({
+            ...baseConfig,
             title,
-            desc,
+            message: desc,
         });
     },
 };

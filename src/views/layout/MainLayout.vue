@@ -1,33 +1,30 @@
 <template>
     <div class="v-main-layout">
-        <Layout>
-            <Sider class="left-silder">
+        <Container>
+            <Aside class="left-silder" width="200px">
                 <MainMenu />
-            </Sider>
-        </Layout>
-        <Layout :style="{marginLeft: '200px'}">
-            <Content class="right-content">
+            </Aside>
+        </Container>
+        <Container :style="{marginLeft: '200px'}">
+            <Main class="right-content">
                 <ScrollBar class="main-content-scrollbar">
                     <slot></slot>
                 </ScrollBar>
-            </Content>
-        </Layout>
+            </Main>
+        </Container>
     </div>
 </template>
 
 <script>
-import { Sider, Layout, Content, Header } from 'iview';
+import { Aside, Container, Main } from 'element-ui';
 import ScrollBar from '@components/ScrollBar';
 import MainMenu from './MainMenu';
 export default {
     name: 'MainLayout',
     components: {
-        Sider,
         MainMenu,
-        Header,
-        Layout,
-        Content,
         ScrollBar,
+        Aside, Container, Main,
     },
 };
 </script>
@@ -56,6 +53,7 @@ export default {
     .right-content {
         overflow: hidden;
         height: @content-height;
+        .p(0);
         .main-content-scrollbar {
             height: @content-height;
         }

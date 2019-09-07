@@ -1,8 +1,8 @@
 <template>
     <div class="v-home">
-        <Divider orientation="left">项目简介</Divider>
+        <Divider content-position="left">项目简介</Divider>
         <div class="desc">此项目为vet项目的iview模板，已实现iview的配置，可直接使用。</div>
-        <Divider orientation="left">项目依赖项</Divider>
+        <Divider content-position="left">项目依赖项</Divider>
         <div class="dependencies">
             <div class="dependencies-item">iview: v3.5.0</div>
             <div class="dependencies-item">nedb: v1.8.0</div>
@@ -12,7 +12,7 @@
             <div class="dependencies-item">vue-scrolly: v0.9.3</div>
             <div class="dependencies-item">vuex: v3.1.1</div>
         </div>
-        <Divider orientation="left">开源声明</Divider>
+        <Divider content-position="left">开源声明</Divider>
         <div class="license">
             <div class="license-name">MIT License</div>
             <div class="license-author">Copyright (c) 2019 康兵奎</div>
@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import { Divider } from 'iview';
+import { Divider } from 'element-ui';
 export default {
     name: 'Home',
     components: {

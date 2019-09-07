@@ -1,7 +1,7 @@
 <template>
     <div class="v-scroll-demo">
          <ScrollBar class="main-container" axis="y">
-            <Divider orientation="left">滚动条-y</Divider>
+            <Divider content-position="left">滚动条-y</Divider>
             <ScrollBar class="v-container">
                 <div class="line-text">测试数据-1</div>
                 <div class="line-text">测试数据-2</div>
@@ -17,7 +17,7 @@
                 <div class="line-text">测试数据-12</div>
                 <div class="line-text">测试数据-13</div>
             </ScrollBar>
-            <Divider orientation="left">滚动条-x</Divider>
+            <Divider content-position="left">滚动条-x</Divider>
             <ScrollBar class="v-container" axis="x">
                 <div class="line-text long-width">测试数据.....</div>
             </ScrollBar>
@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import { Divider } from 'iview';
+import { Divider } from 'element-ui';
 import ScrollBar from '@components/ScrollBar';
 export default {
     name: 'ScrollDemo',

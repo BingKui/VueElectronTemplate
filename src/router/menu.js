@@ -12,34 +12,34 @@ import LoadMarkdownFile from '@views/Demo/LoadMarkdownFile';
 export const MenuList = [{
     groupName: 'Main', // 分组名称
     menuList: [{
-        icon: 'ios-home-outline', // 图标
+        icon: 'el-icon-house', // 图标
         name: 'Home', // 菜单名称
         router: 'main-home', // 菜单路由
     }],
 }, {
     groupName: 'Demo', // 分组名称
     menuList: [{
-        icon: 'ios-albums-outline', // 图标
+        icon: 'el-icon-tickets', // 图标
         name: 'ScrollDemo', // 菜单名称
         router: 'demo-scroll', // 菜单路由
     }, {
-        icon: 'ios-albums-outline', // 图标
+        icon: 'el-icon-tickets', // 图标
         name: 'MouseRightDemo', // 菜单名称
         router: 'demo-mouse-right', // 菜单路由
     }, {
-        icon: 'ios-albums-outline', // 图标
+        icon: 'el-icon-tickets', // 图标
         name: 'LocalDBDemo', // 菜单名称
         router: 'demo-local-db', // 菜单路由
     }, {
-        icon: 'ios-albums-outline', // 图标
+        icon: 'el-icon-tickets', // 图标
         name: 'NoticeDemo', // 菜单名称
         router: 'demo-notice', // 菜单路由
     }, {
-        icon: 'ios-albums-outline', // 图标
+        icon: 'el-icon-tickets', // 图标
         name: 'ClipboardDemo', // 菜单名称
         router: 'demo-clipboard', // 菜单路由
     }, {
-        icon: 'ios-albums-outline', // 图标
+        icon: 'el-icon-tickets', // 图标
         name: 'LoadMarkdownFile', // 菜单名称
         router: 'demo-load-markdown-file', // 菜单路由
     }],
