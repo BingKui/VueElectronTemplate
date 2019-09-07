@@ -1,6 +1,7 @@
 import { app, BrowserWindow } from 'electron' // eslint-disable-line
 import { Notic, AddShortcuts, AddMenuList, AddDataBase } from './electron';
 import { FUNCTION_KEY, LETTER_KEY } from './constants/shortcuts';
+import DB_NAME from './constants/db';
 const { port, host } = require('../electron/config');
 
 if (process.env.NODE_ENV !== 'development') {
@@ -19,16 +20,16 @@ function createWindow() {
         height: 700,
         width: 900,
         center: true, // 窗口默认居中
-        // resizable: false, // 不可修改窗口大小
-        // maximizable: false, // 不存在最大化
-        // skipTaskbar: true, // 任务栏显示
-        // useContentSize: false, // 不允许修改大小
+        resizable: false, // 不可修改窗口大小
+        maximizable: false, // 不存在最大化
+        skipTaskbar: true, // 任务栏显示
+        useContentSize: false, // 不允许修改大小
         // transparent: true, // 透明
-        // // frame: false, // 不使用框架
+        frame: false, // 不使用框架
         // // show: false, // 禁止显示
-        // fullscreenable: false,
-        // titleBarStyle: 'hidden',
-        // backgroundColor: 'none',
+        fullscreenable: false,
+        titleBarStyle: 'hidden',
+        backgroundColor: 'none',
         webPreferences: {
             devTools: true,
             scrollBounce: false,
@@ -36,6 +37,9 @@ function createWindow() {
             // webSecurity: false,
         },
     });
+    if (isDev) {
+        mainWindow.webContents.openDevTools();
+    }
 
     mainWindow.loadURL(winURL);
 
@@ -49,7 +53,9 @@ function createWindow() {
     });
     AddMenuList();
     // 添加数据库
-    AddDataBase('test');
+    for (let key in DB_NAME) {
+        AddDataBase(DB_NAME[key]);
+    }
 }
 
 app.on('ready', createWindow);

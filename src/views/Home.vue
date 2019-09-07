@@ -1,153 +1,70 @@
 <template>
     <div class="v-home">
-         <ScrollBar class="main-container" axis="y">
-            <div class="v-title">滚动条-y</div>
-            <ScrollBar class="v-container">
-                <div class="line-text">测试数据-1</div>
-                <div class="line-text">测试数据-2</div>
-                <div class="line-text">测试数据-3</div>
-                <div class="line-text">测试数据-4</div>
-                <div class="line-text">测试数据-5</div>
-                <div class="line-text">测试数据-6</div>
-                <div class="line-text">测试数据-7</div>
-                <div class="line-text">测试数据-8</div>
-                <div class="line-text">测试数据-9</div>
-                <div class="line-text">测试数据-10</div>
-                <div class="line-text">测试数据-11</div>
-                <div class="line-text">测试数据-12</div>
-                <div class="line-text">测试数据-13</div>
-            </ScrollBar>
-            <div class="v-title">滚动条-x</div>
-            <ScrollBar class="v-container" axis="x">
-                <div class="line-text long-width">测试数据.....</div>
-            </ScrollBar>
-            <div class="v-title">右键菜单</div>
-            <MouseRight class="right-mouse-el" :mouseData="mouseData" :mouseKey="value">
-                <div class="mouse-right-value">右键点击</div>
-            </MouseRight>
-            <div class="v-title">加载文件内容</div>
-            <div class="v-container">{{fileText}}</div>
-            <div class="v-title">系统通知</div>
-            <div class="v-container">
-                <button @click="openNotic">普通通知</button>
-                <button @click="openLinkNotic">添加链接的通知</button>
-            </div>
-            <div class="v-title">粘贴板操作</div>
-            <div class="v-container">
-                <div id="copy-text">点击下方复制按钮，即可复制这段文字。</div>
-                <button @click="copyText">复制</button>
-            </div>
-            <div class="v-title">粘贴板操作</div>
-            <div class="v-container">
-                <button @click="getDataList">获取本地数据</button>
-                <div class="data-list-item" v-for="item in dataList" :key="item._id">
-                    <span>{{item.name}}: {{item.value}}</span>
-                    <button @click="() => delDataItem(item._id)">删除</button>
-                </div>
-                <button @click="addDataItem">添加一条记录</button>
-            </div>
-        </ScrollBar>
+        <Divider orientation="left">项目简介</Divider>
+        <div class="desc">此项目为vet项目的iview模板，已实现iview的配置，可直接使用。</div>
+        <Divider orientation="left">项目依赖项</Divider>
+        <div class="dependencies">
+            <div class="dependencies-item">iview: v3.5.0</div>
+            <div class="dependencies-item">nedb: v1.8.0</div>
+            <div class="dependencies-item">v-contextmenu: v2.8.0</div>
+            <div class="dependencies-item">vue: v2.6.10</div>
+            <div class="dependencies-item">vue-router: v3.0.6</div>
+            <div class="dependencies-item">vue-scrolly: v0.9.3</div>
+            <div class="dependencies-item">vuex: v3.1.1</div>
+        </div>
+        <Divider orientation="left">开源声明</Divider>
+        <div class="license">
+            <div class="license-name">MIT License</div>
+            <div class="license-author">Copyright (c) 2019 康兵奎</div>
+            <div class="license-part">Permission is hereby granted, free of charge, to any person obtaining a copy<br />
+            of this software and associated documentation files (the "Software"), to deal<br />
+            in the Software without restriction, including without limitation the rights<br />
+            to use, copy, modify, merge, publish, distribute, sublicense, and/or sell<br />
+            copies of the Software, and to permit persons to whom the Software is<br />
+            furnished to do so, subject to the following conditions:</div>
+            <div class="license-part">The above copyright notice and this permission notice shall be included in all<br />
+            copies or substantial portions of the Software.</div>
+            <div class="license-part">THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR<br />
+            IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,<br />
+            FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE<br />
+            AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER<br />
+            LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,<br />
+            OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE<br />
+            SOFTWARE.</div>
+        </div>
     </div>
 </template>
 
 <script>
-import ScrollBar from '@components/ScrollBar';
-import MouseRight from '@components/MouseRight';
-import { loadMarkdownFile } from '@common/utils';
-import { Notic, Copy } from '@common/common';
-import { addItem, getAllItems, delItem } from '@common/db';
+import { Divider } from 'iview';
 export default {
     name: 'Home',
     components: {
-        ScrollBar,
-        MouseRight,
-    },
-    data() {
-        return {
-            mouseData: [{
-                text: 'alert',
-                action: (val) => {
-                    alert(JSON.stringify(val));
-                },
-            }, {
-                text: 'alert',
-                action: (val) => {
-                    alert(JSON.stringify(val));
-                },
-            }],
-            value: {
-                id: 1,
-                text: '1',
-            },
-            fileText: loadMarkdownFile('test'),
-            dataList: [],
-        };
-    },
-    methods: {
-        openNotic() {
-            Notic('普通通知', '这是一个普通的通知!这是一个普通的通知!这是一个普通的通知!这是一个普通的通知!这是一个普通的通知!这是一个普通的通知!这是一个普通的通知!');
-        },
-        openLinkNotic() {
-            Notic('链接通知', '这是一个带链接的通知', 'https://www.uiseed.cn');
-        },
-        copyText() {
-            Copy(document.querySelector('#copy-text').innerHTML);
-        },
-        async getDataList() {
-            this.dataList = await getAllItems('test');
-        },
-        async addDataItem() {
-            await addItem('test', {
-                name: '111',
-                value: 100,
-            });
-            await this.getDataList();
-        },
-        async delDataItem(id) {
-            await delItem('test', id);
-            await this.getDataList();
-        },
+        Divider,
     },
 };
 </script>
 
 <style lang="less" scoped>
 .v-home {
-    font-size: 20px;
-    .main-container {
-        height: 100vh;
-        width: 100%;
+    .p-h(@gap);
+    .desc {
+        text-indent: 20px;
     }
-    .v-title {
-        .font-size-lg();
-        color: @primary;
-        .m(@gap-md);
-    }
-    .v-container {
-        .m(@gap-md);
-        height: 200px;
-        background-color: @gray;
-        .font-size-sm();
-        .line-text {
+    .dependencies {
+        .p-l(20px);
+        .dependencies-item {
             .font-size();
-            text-indent: @gap;
-            .m-v(@gap-sm);
-        }
-        .long-width {
-            width: 1000px;
-            background-color: @warn;
+            .m-v(3px);
         }
     }
-    .right-mouse-el {
-        .m(@gap-md);
-        .p(@gap);
-        .flex-row-center();
-        background-color: @gray;
-        .mouse-right-value {
-            background-color: @danger;
-            color: @white;
-            width: 100px;
-            .t-c();
+    .license {
+        .p-l(20px);
+        .license-name,
+        .license-author,
+        .license-part {
+            .font-size-sm();
+            .m-b(@gap-md);
         }
     }
 }

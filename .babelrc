@@ -12,5 +12,9 @@
         "add-module-exports",
         "transform-runtime",
         "transform-decorators-legacy",
+        ["import", {
+            "libraryName": "iview",
+            "libraryDirectory": "src/components"
+        }]
     ]
 }
