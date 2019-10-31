@@ -70,3 +70,4 @@ build/*
 thumbs.db
 !.gitkeep
 dist/
+.vscode/
