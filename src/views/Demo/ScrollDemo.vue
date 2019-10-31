@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import { Divider } from 'iview';
+import { Divider } from 'view-design';
 import ScrollBar from '@components/ScrollBar';
 export default {
     name: 'ScrollDemo',

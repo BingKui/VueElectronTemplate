@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import { Button, Divider, Input } from 'iview';
+import { Button, Divider, Input } from 'view-design';
 import { Copy, PasteValue } from '@common/common';
 export default {
     name: 'ClipboardDemo', // 粘贴板操作

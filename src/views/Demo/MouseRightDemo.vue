@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import { Divider, Card } from 'iview';
+import { Divider, Card } from 'view-design';
 import MouseRight from '@components/MouseRight';
 import { TipSuccess, TipError, TipWarning, TipLoading } from '@common/tip';
 import logger from '@common/logger';

@@ -1,4 +1,4 @@
-import { Notice } from 'iview';
+import { Notice } from 'view-design';
 import { shell } from 'electron';
 
 const baseConfig = {

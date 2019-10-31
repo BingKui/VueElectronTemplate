@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { Button, Divider } from 'iview';
+import { Button, Divider } from 'view-design';
 import { NoticeLocal, NoticeSystem } from '@common/notice';
 export default {
     name: 'NoticDemo', // 通知

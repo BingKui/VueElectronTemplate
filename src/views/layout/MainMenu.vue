@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import { Menu, MenuGroup, MenuItem, Icon, Input } from 'iview';
+import { Menu, MenuGroup, MenuItem, Icon, Input } from 'view-design';
 import ScrollBar from '@components/ScrollBar';
 import { MenuList, MenuRouter } from '@router/menu';
 import { dealMenuBySearchValue } from '@common/utils';

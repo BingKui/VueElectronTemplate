@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import { Divider } from 'iview';
+import { Divider } from 'view-design';
 import { loadMarkdownFile } from '@common/utils';
 export default {
     name: 'LoadMarkdownFile', // 加载markdown文件

@@ -1,4 +1,4 @@
-import { Message } from 'iview';
+import { Message } from 'view-design';
 
 Message.config({
     top: 25,

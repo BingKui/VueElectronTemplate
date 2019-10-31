@@ -4,11 +4,11 @@
         <div class="desc">此项目为vet项目的iview模板，已实现iview的配置，可直接使用。</div>
         <Divider orientation="left">项目依赖项</Divider>
         <div class="dependencies">
-            <div class="dependencies-item">iview: v3.5.0</div>
+            <div class="dependencies-item">view-design(iview): v4.0.2</div>
             <div class="dependencies-item">nedb: v1.8.0</div>
             <div class="dependencies-item">v-contextmenu: v2.8.0</div>
             <div class="dependencies-item">vue: v2.6.10</div>
-            <div class="dependencies-item">vue-router: v3.0.6</div>
+            <div class="dependencies-item">vue-router: v3.1.3</div>
             <div class="dependencies-item">vue-scrolly: v0.9.3</div>
             <div class="dependencies-item">vuex: v3.1.1</div>
         </div>
@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import { Divider } from 'iview';
+import { Divider } from 'view-design';
 export default {
     name: 'Home',
     components: {

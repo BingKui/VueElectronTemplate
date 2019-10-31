@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { Divider, Card, Button, Input} from 'iview';
+import { Divider, Card, Button, Input} from 'view-design';
 import { addItem, getAllItems, delItem } from '@common/db';
 import { TipSuccess, TipError } from '@common/tip';
 import DB_NAME from '@constants/db';

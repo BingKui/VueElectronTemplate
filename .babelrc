@@ -13,7 +13,7 @@
         "transform-runtime",
         "transform-decorators-legacy",
         ["import", {
-            "libraryName": "iview",
+            "libraryName": "view-design",
             "libraryDirectory": "src/components"
         }]
     ]

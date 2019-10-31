@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import { Sider, Layout, Content, Header } from 'iview';
+import { Sider, Layout, Content, Header } from 'view-design';
 import ScrollBar from '@components/ScrollBar';
 import MainMenu from './MainMenu';
 export default {
