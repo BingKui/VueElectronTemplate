@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import 'view-design/dist/styles/view-design.css';
+import 'view-design/dist/styles/iview.css';
 import MainLayout from '@views/layout/MainLayout';
 import '@styles/main';
 export default {
