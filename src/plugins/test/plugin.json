@@ -1,0 +1,11 @@
+{
+    "name": "测试插件",
+    "description": "描述信息",
+    "minMainVersion": "1.0.1",
+    "version": "0.0.1",
+    "author": "康兵奎",
+    "main": "index.html",
+    "logo": "",
+    "api": ["openFolder"],
+    "window": {}
+}

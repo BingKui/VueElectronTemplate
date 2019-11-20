@@ -1,5 +1,6 @@
 <template>
     <div class="v-home">
+        <button @click="openPluginWindow">打开插件</button>
          <ScrollBar class="main-container" axis="y">
             <div class="v-title">滚动条-y</div>
             <ScrollBar class="v-container">
@@ -56,6 +57,8 @@ import MouseRight from '@components/MouseRight';
 import { loadMarkdownFile } from '@common/utils';
 import { Notic, Copy } from '@common/common';
 import { addItem, getAllItems, delItem } from '@common/db';
+import { createNewWindow, createNewView } from '@common/electron-render';
+import '../api/api';
 export default {
     name: 'Home',
     components: {
@@ -106,6 +109,10 @@ export default {
         async delDataItem(id) {
             await delItem('test', id);
             await this.getDataList();
+        },
+        openPluginWindow(name) {
+            // const win = createNewWindow('test');
+            createNewView();
         },
     },
 };

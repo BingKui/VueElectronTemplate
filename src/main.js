@@ -1,4 +1,4 @@
-import { app, BrowserWindow } from 'electron' // eslint-disable-line
+import { app, BrowserWindow, BrowserView } from 'electron' // eslint-disable-line
 import { Notic, AddShortcuts, AddMenuList, AddDataBase } from './electron';
 import { FUNCTION_KEY, LETTER_KEY } from './constants/shortcuts';
 const { port, host } = require('../electron/config');
@@ -19,21 +19,17 @@ function createWindow() {
         height: 700,
         width: 900,
         center: true, // 窗口默认居中
-        // resizable: false, // 不可修改窗口大小
-        // maximizable: false, // 不存在最大化
-        // skipTaskbar: true, // 任务栏显示
-        // useContentSize: false, // 不允许修改大小
-        // transparent: true, // 透明
-        // // frame: false, // 不使用框架
-        // // show: false, // 禁止显示
-        // fullscreenable: false,
-        // titleBarStyle: 'hidden',
-        // backgroundColor: 'none',
+        resizable: false, // 不可修改窗口大小
+        maximizable: false, // 不存在最大化
+        skipTaskbar: true, // 任务栏显示
+        useContentSize: false, // 不允许修改大小
+        transparent: false, // 透明
+        frame: true, // 不使用框架
+        // show: false, // 禁止显示
+        fullscreenable: false,
         webPreferences: {
-            devTools: true,
             scrollBounce: false,
             nodeIntegration: true,
-            // webSecurity: false,
         },
     });
 
@@ -47,7 +43,7 @@ function createWindow() {
     AddShortcuts(`${FUNCTION_KEY[4]}+${FUNCTION_KEY[9]}+${LETTER_KEY[25]}`, () => {
         Notic('快捷键提示', '绑定快捷键成功');
     });
-    AddMenuList();
+    // AddMenuList();
     // 添加数据库
     AddDataBase('test');
 }

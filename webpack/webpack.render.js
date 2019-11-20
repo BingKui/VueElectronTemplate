@@ -34,7 +34,7 @@ const renderConfig = {
     output: {
         filename: '[name].[hash:8].js',
         path: path.resolve(__dirname, '../dist/electron'),
-        chunkFilename: '[id].[hash:8].js'
+        chunkFilename: '[name].[hash:8].js'
     },
     module: {
         rules: [
@@ -163,6 +163,12 @@ const renderConfig = {
                     chunks: 'all',
                     priority: 20,
                 },
+                api: {
+                    test: /[\\/]src[\\/]api[\\/]/,
+                    name: 'api',
+                    chunks: 'all',
+                    priority: 30,
+                },
             }
         },
         minimizer: [
@@ -193,7 +199,7 @@ const renderConfig = {
             title: pkg.build.productName,
             filename: 'index.html',
             template: path.resolve(__dirname, '../src/index.ejs'), // 模板文件，不同入口可以根据需要设置不同模板
-            chunks: ['index', 'vendor', 'common'], // html文件中需要要引入的js模块，这里的 vendor 是webpack默认配置下抽离的公共模块的名称
+            chunks: ['index', 'vendor', 'common', 'api'], // html文件中需要要引入的js模块，这里的 vendor 是webpack默认配置下抽离的公共模块的名称
             minify: {
                 collapseWhitespace: true,
                 removeAttributeQuotes: true,
@@ -229,6 +235,10 @@ if (isProd) {
         }),
     );
     renderConfig.plugins.push(
+        new CopyWebpackPlugin([{
+            from: path.resolve(__dirname, '../src/plugins'),
+            to: path.resolve(__dirname, '../dist/electron/plugins'),
+        }, ]),
         new CopyWebpackPlugin([
             {
                 from: path.join(__dirname, '../src/assets'),
