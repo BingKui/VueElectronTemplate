@@ -11,8 +11,8 @@ const webpack = require('webpack');
 const Multispinner = require('multispinner');
 
 
-const mainConfig = require('../webpack/webpack.main');
-const rendererConfig = require('../webpack/webpack.render');
+const mainConfig = require('../webpack/main');
+const rendererConfig = require('../webpack/render');
 // const webConfig = require('./webpack.web.config');
 
 const doneLog = chalk.bgGreen.white(' DONE ') + ' ';

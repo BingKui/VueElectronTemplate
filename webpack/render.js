@@ -9,7 +9,7 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin');
 // 文件 copy 插件
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 // js压缩、优化插件
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 // 抽取css
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 // 压缩 css
@@ -166,13 +166,24 @@ const renderConfig = {
             }
         },
         minimizer: [
-            new UglifyJsPlugin({ // 压缩js
-                uglifyOptions: {
+            new TerserPlugin({ // 压缩js
+                cache: true,
+                parallel: true,
+                sourceMap: true,
+                terserOptions: {
+                    warnings: false,
+                    parse: {},
                     compress: {
                         drop_debugger: false,
                         drop_console: true
-                    }
-                }
+                    },
+                    mangle: true, // Note `mangle.properties` is `false` by default.
+                    output: null,
+                    toplevel: false,
+                    nameCache: null,
+                    ie8: false,
+                    keep_fnames: false,
+                },
             }),
             new OptimizeCSSAssetsPlugin({ // 压缩css
                 cssProcessorOptions: {
