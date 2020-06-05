@@ -1,6 +1,11 @@
 <template>
     <div class="v-home">
          <ScrollBar class="main-container" axis="y">
+            <div class="v-title">组件示例</div>
+            <div>
+                <Button type="primary">按钮</Button>
+                <Icon type="loading" />
+            </div>
             <div class="v-title">滚动条-y</div>
             <ScrollBar class="v-container">
                 <div class="line-text">测试数据-1</div>
@@ -56,11 +61,14 @@ import MouseRight from '@components/MouseRight';
 import { loadMarkdownFile } from '@common/utils';
 import { Notic, Copy } from '@common/common';
 import { addItem, getAllItems, delItem } from '@common/db';
+import { Button, Icon } from 'ant-design-vue';
 export default {
     name: 'Home',
     components: {
         ScrollBar,
         MouseRight,
+        Button,
+        Icon,
     },
     data() {
         return {

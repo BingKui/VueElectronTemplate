@@ -1,5 +1,5 @@
 {
-  "name": "vet",
+  "name": "vet-ant-design",
   "version": "1.0.0",
   "description": "一个用来开发客户端的模板。",
   "main": "./dist/electron/main.js",
@@ -16,7 +16,8 @@
     "Vue",
     "Electron",
     "Vuex",
-    "Vue-Router"
+    "Vue-Router",
+    "Ant Design Vue"
   ],
   "author": "康兵奎",
   "license": "MIT",
@@ -59,6 +60,7 @@
     }
   },
   "dependencies": {
+    "ant-design-vue": "^1.6.2",
     "nedb": "^1.8.0",
     "v-contextmenu": "^2.8.0",
     "vue": "^2.6.10",
@@ -84,6 +86,7 @@
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.0",
     "babel-plugin-add-module-exports": "^1.0.2",
+    "babel-plugin-import": "^1.13.0",
     "cfonts": "^2.4.3",
     "chalk": "^2.4.2",
     "clean-webpack-plugin": "^2.0.2",

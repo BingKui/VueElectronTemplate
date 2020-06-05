@@ -15,7 +15,7 @@ function createWindow() {
      * Initial window options
      */
     mainWindow = new BrowserWindow({
-        title: 'VET',
+        title: 'VET-Ant Design Vue',
         height: 700,
         width: 900,
         center: true, // 窗口默认居中
