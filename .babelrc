@@ -23,6 +23,11 @@
                 "legacy": true
             }
         ],
+        ["import", {
+            "libraryName": "muse-ui",
+            "libraryDirectory": "lib",
+            "camel2DashComponentName": false
+        }],
         "@babel/plugin-syntax-dynamic-import",
         "@babel/plugin-syntax-import-meta",
         "@babel/plugin-proposal-class-properties",
