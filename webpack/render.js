@@ -240,13 +240,11 @@ if (isProd) {
         }),
     );
     renderConfig.plugins.push(
-        new CopyWebpackPlugin([
-            {
-                from: path.join(__dirname, '../src/assets'),
-                to: path.join(__dirname, '../dist/electron/assets'),
-                ignore: ['.*']
-            }
-        ]),
+        new CopyWebpackPlugin([{
+            from: path.join(__dirname, '../src/assets'),
+            to: path.join(__dirname, '../dist/electron/assets'),
+            ignore: ['.*']
+        }]),
         new webpack.DefinePlugin({
             'process.env.ENV': '"prod"'
         }),
