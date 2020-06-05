@@ -1,6 +1,10 @@
 <template>
     <div class="v-home">
          <ScrollBar class="main-container" axis="y">
+            <div class="v-title">组件库示例</div>
+            <div>
+                <Button type="primary">按钮</Button>
+            </div>
             <div class="v-title">滚动条-y</div>
             <ScrollBar class="v-container">
                 <div class="line-text">测试数据-1</div>
@@ -56,11 +60,19 @@ import MouseRight from '@components/MouseRight';
 import { loadMarkdownFile } from '@common/utils';
 import { Notic, Copy } from '@common/common';
 import { addItem, getAllItems, delItem } from '@common/db';
+import { Button, Tag, Radio, Checkbox, Input, Badge, Switch } from 'at-ui';
 export default {
     name: 'Home',
     components: {
         ScrollBar,
         MouseRight,
+        Button,
+        Tag,
+        Radio,
+        Checkbox,
+        Input,
+        Badge,
+        Switch,
     },
     data() {
         return {
