@@ -1,6 +1,17 @@
 <template>
     <div class="v-home">
          <ScrollBar class="main-container" axis="y">
+            <div class="v-title">组件库示例</div>
+            <div>
+                <n3-button loading >default</n3-button>
+                <n3-button badge="2" >badge</n3-button>
+                <n3-button disabled>default</n3-button>
+                <n3-button type="primary" loading>primary</n3-button>
+                <n3-button type="success">success</n3-button>
+                <n3-button type="info">info</n3-button>
+                <n3-button type="warning">warning</n3-button>
+                <n3-button type="danger">danger</n3-button>
+            </div>
             <div class="v-title">滚动条-y</div>
             <ScrollBar class="v-container">
                 <div class="line-text">测试数据-1</div>

@@ -1,5 +1,5 @@
 {
-  "name": "vet",
+  "name": "vet-n3",
   "version": "1.0.0",
   "description": "一个用来开发客户端的模板。",
   "main": "./dist/electron/main.js",
@@ -59,6 +59,7 @@
     }
   },
   "dependencies": {
+    "N3-components": "^2.4.5",
     "nedb": "^1.8.0",
     "v-contextmenu": "^2.8.0",
     "vue": "^2.6.10",
