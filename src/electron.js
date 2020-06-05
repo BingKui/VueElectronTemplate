@@ -10,7 +10,6 @@ const Notic = (title, body) => {
         subtitle: '', // 副标题
         body, // 内容
         silent: true, // 是否发出提示音
-        icon: '', // 提示图标
         hasReply: false, // 是否存在回复框
         replyPlaceholder: '', // 回复框中的提示信息
         closeButtonText: '关闭', // 关闭按钮文案

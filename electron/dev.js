@@ -14,9 +14,9 @@ const WebpackDevServer = require('webpack-dev-server');
 const webpackHotMiddleware = require('webpack-hot-middleware');
 
 // electron 主线程配置文件
-const mainConfig = require('../webpack/webpack.main');
+const mainConfig = require('../webpack/main');
 // 页面配置文件
-const rendererConfig = require('../webpack/webpack.render');
+const rendererConfig = require('../webpack/render');
 
 const { port } = require('./config');
 
