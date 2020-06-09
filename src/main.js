@@ -37,6 +37,10 @@ function createWindow() {
         },
     });
 
+    if (isDev) {
+        mainWindow.webContents.openDevTools();
+    }
+
     mainWindow.loadURL(winURL);
 
     mainWindow.on('closed', () => {

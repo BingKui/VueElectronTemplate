@@ -1,6 +1,13 @@
 <template>
     <div class="v-home">
          <ScrollBar class="main-container" axis="y">
+            <div class="v-title">组件库示例</div>
+            <div>
+                <v-btn>Normal</v-btn>
+                <v-btn color="primary">Primary</v-btn>
+                <v-btn color="error">Error</v-btn>
+                <v-btn disabled>Disabled</v-btn>
+            </div>
             <div class="v-title">滚动条-y</div>
             <ScrollBar class="v-container">
                 <div class="line-text">测试数据-1</div>

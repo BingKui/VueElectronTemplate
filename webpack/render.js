@@ -20,6 +20,8 @@ const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const FirendlyErrorePlugin = require('friendly-errors-webpack-plugin');
 // 清理插件
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+// vuetify-loader
+const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin');
 
 // 是否是正式环境
 const isProd = process.env.ENV === 'prod';
@@ -85,6 +87,24 @@ const renderConfig = {
                         }
                     },
                 ]
+            },
+            {
+                test: /\.s(c|a)ss$/,
+                use: [
+                    isProd ? MiniCssExtractPlugin.loader : 'vue-style-loader',
+                    'css-loader',
+                    {
+                        loader: 'sass-loader',
+                        // Requires sass-loader@^8.0.0
+                        options: {
+                            implementation: require('sass'),
+                            sassOptions: {
+                                fiber: require('fibers'),
+                                indentedSyntax: true // optional
+                            },
+                        },
+                    },
+                ],
             },
             {
                 test: /\.(js|vue)$/,
@@ -200,6 +220,15 @@ const renderConfig = {
         new VueLoaderPlugin(),
         new ProgressBarPlugin(),
         new FirendlyErrorePlugin(),
+        new VuetifyLoaderPlugin({
+            // match (originalTag, { kebabTag, camelTag, path, component }) {
+            //     console.log(camelTag);
+            //     console.log(kebabTag);
+            //     if (kebabTag.startsWith('core-')) {
+            //         return [camelTag, `import ${camelTag} from '@/components/core/${camelTag.substring(4)}.vue'`]
+            //     }
+            // }
+        }),
         new HTMLWebpackPlugin({
             title: pkg.build.productName,
             filename: 'index.html',
