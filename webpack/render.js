@@ -125,7 +125,7 @@ const renderConfig = {
                     query: {
                         limit: 10000,
                         publicPath: '../',
-                        name: 'img/[name]-[folder].[ext]'
+                        name: '[folder]/[name].[ext]'
                     }
                 }
             },
@@ -134,7 +134,7 @@ const renderConfig = {
                 loader: 'url-loader',
                 options: {
                     limit: 10000,
-                    name: 'media/[name]-[folder].[ext]'
+                    name: '[folder]/[name].[ext]'
                 }
             },
             {
@@ -144,7 +144,7 @@ const renderConfig = {
                     query: {
                         limit: 10000,
                         publicPath: '../',
-                        name: 'fonts/[name]-[folder].[ext]'
+                        name: '[folder]/[name].[ext]'
                     }
                 }
             },
