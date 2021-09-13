@@ -1,7 +1,7 @@
 {
   "name": "vet-iview",
   "version": "1.0.0",
-  "description": "vet项目的iview模板。",
+  "description": "vet项目的 element-ui 模板。",
   "main": "./dist/electron/main.js",
   "scripts": {
     "dev": "node ./electron/dev.js",
@@ -59,13 +59,13 @@
     }
   },
   "dependencies": {
-    "element-ui": "^2.12.0",
+    "element-ui": "^2.15.6",
     "nedb": "^1.8.0",
     "v-contextmenu": "^2.8.1",
-    "vue": "^2.6.10",
-    "vue-router": "^3.1.3",
+    "vue": "^2.6.14",
+    "vue-router": "^3.5.2",
     "vue-scrolly": "^0.9.3",
-    "vuex": "^3.1.1"
+    "vuex": "^3.6.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0",
@@ -94,7 +94,7 @@
     "cross-spawn": "^7.0.0",
     "css-loader": "^2.1.1",
     "del": "^4.1.1",
-    "electron": "^9.0.2",
+    "electron": "^11.5.0",
     "electron-builder": "^22.7.0",
     "eslint": "^5.16.0",
     "eslint-loader": "^2.1.2",
