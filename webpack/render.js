@@ -81,7 +81,7 @@ const renderConfig = {
                         loader: 'sass-resources-loader',
                         options: {
                             resources: path.resolve(__dirname,
-                                '../src/styles/veriable.less'),
+                                '../src/styles/var.less'),
                         }
                     },
                 ]
@@ -133,17 +133,16 @@ const renderConfig = {
     },
     resolve: { // 设置模块如何被解析
         alias: {
-            '@components': path.resolve(__dirname, '../src/components'),
-            '@styles': path.resolve(__dirname, '../src/styles'),
-            '@store': path.resolve(__dirname, '../src/store'),
-            '@router': path.resolve(__dirname, '../src/router'),
+            '@': path.resolve(__dirname, '../src'),
             '@assets': path.resolve(__dirname, '../src/assets'),
             '@common': path.resolve(__dirname, '../src/common'),
-            '@views': path.resolve(__dirname, '../src/views'),
-            '@mock': path.resolve(__dirname, '../src/mock'),
             '@constants': path.resolve(__dirname, '../src/constants'),
-            '@node': path.resolve(__dirname, '../src/node.js'),
-            '@electron': path.resolve(__dirname, '../src/electron.js'),
+            '@components': path.resolve(__dirname, '../src/components'),
+            '@mock': path.resolve(__dirname, '../src/mock'),
+            '@router': path.resolve(__dirname, '../src/router'),
+            '@styles': path.resolve(__dirname, '../src/styles'),
+            '@store': path.resolve(__dirname, '../src/store'),
+            '@views': path.resolve(__dirname, '../src/views'),
         },
         extensions: ['*', '.less', '.css', '.js', '.vue']
     },

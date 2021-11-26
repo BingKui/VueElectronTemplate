@@ -1,58 +1,49 @@
-import { app, BrowserWindow } from 'electron' // eslint-disable-line
-import { Notic, AddShortcuts, AddMenuList, AddDataBase } from './electron';
-import { FUNCTION_KEY, LETTER_KEY } from './constants/shortcuts';
-const { port, host } = require('../electron/config');
+import { app, Tray } from 'electron' // eslint-disable-line
+import { isDev, mainURL, createMainWindow, createTrayMenu, trayIcon,
+    AddDataBase, AddAppUpdate, AddAppSetting, AddTray, AddMenuList } from './utils';
 
-if (process.env.NODE_ENV !== 'development') {
-    global.__static = require('path').join(__dirname, '/static').replace(/\\/g, '\\\\') // eslint-disable-line
-}
-let mainWindow;
-const isDev = process.env.ENV === 'dev';
-const winURL = isDev ? `http://${host}:${port}` : `file://${__dirname}/index.html`;
-
-function createWindow() {
-    /**
-     * Initial window options
-     */
-    mainWindow = new BrowserWindow({
-        title: 'VET',
-        height: 700,
-        width: 900,
-        center: true, // 窗口默认居中
-        // resizable: false, // 不可修改窗口大小
-        // maximizable: false, // 不存在最大化
-        // skipTaskbar: true, // 任务栏显示
-        // useContentSize: false, // 不允许修改大小
-        // transparent: true, // 透明
-        // // frame: false, // 不使用框架
-        // // show: false, // 禁止显示
-        // fullscreenable: false,
-        // titleBarStyle: 'hidden',
-        // backgroundColor: 'none',
-        webPreferences: {
-            devTools: true,
-            scrollBounce: false,
-            nodeIntegration: true,
-            // webSecurity: false,
-        },
-    });
-
-    mainWindow.loadURL(winURL);
-
+let mainWindow, tray;
+const initAppWindow = () => {
+    console.log('执行到这里');
+    mainWindow = createMainWindow();
+    mainWindow.loadURL(mainURL);
     mainWindow.on('closed', () => {
         mainWindow = null;
     });
-    Notic('主进程提示', '打开成功');
-    // 添加快捷键
-    AddShortcuts(`${FUNCTION_KEY[4]}+${FUNCTION_KEY[9]}+${LETTER_KEY[25]}`, () => {
-        Notic('快捷键提示', '绑定快捷键成功');
+    mainWindow.on('ready-to-show', () => {
+        mainWindow.show();
     });
-    AddMenuList();
-    // 添加数据库
-    AddDataBase('test');
-}
+    if (isDev) mainWindow.openDevTools();
+};
 
-app.on('ready', createWindow);
+app.on('ready', () => {
+    // 初始化窗口
+    initAppWindow();
+    // 添加测试数据库
+    AddDataBase('test');
+    // 添加设置支持
+    AddAppSetting(app, mainWindow);
+    // 添加自定义菜单
+    AddMenuList();
+    // 添加系统托盘图标
+    if (!tray) {
+        // 添加托盘
+        tray = new Tray(trayIcon);
+        tray.setToolTip(app.getName());
+        // 左键打开
+        tray.on('click', (event, bounds, position) => {
+            tray.setContextMenu(null);
+            mainWindow ? mainWindow.show() : initAppWindow();
+        });
+        // 右键点击打开菜单
+        tray.on('right-click', (event, bounds) => {
+            const contextMenu = createTrayMenu();
+            tray.setContextMenu(contextMenu);
+        });
+    }
+    // 支持更新
+    AddAppUpdate(mainWindow);
+});
 
 app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') {
@@ -62,6 +53,8 @@ app.on('window-all-closed', () => {
 
 app.on('activate', () => {
     if (mainWindow === null) {
-        createWindow();
+        initAppWindow();
+    } else {
+        mainWindow.show();
     }
 });

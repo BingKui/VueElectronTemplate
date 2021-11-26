@@ -16,7 +16,8 @@
     "Vue",
     "Electron",
     "Vuex",
-    "Vue-Router"
+    "Vue-Router",
+    "Template"
   ],
   "author": "康兵奎",
   "license": "MIT",
@@ -27,9 +28,19 @@
   "build": {
     "productName": "Vet",
     "appId": "com.vet.template",
+    "copyright": "康兵奎版权所有",
     "directories": {
       "output": "dist"
     },
+    "electronDownload": {
+      "mirror": "https://npm.taobao.org/mirrors/electron/"
+    },
+    "publish": [
+      {
+        "provider": "generic",
+        "url": ""
+      }
+    ],
     "files": [
       "dist/electron/**/*"
     ],
@@ -49,16 +60,31 @@
       ]
     },
     "mac": {
-      "icon": "build/icons/icon.icns"
+      "target": {
+        "target": "default",
+        "arch": [
+          "x64",
+          "arm64"
+        ]
+      },
+      "artifactName": "${productName}-${version}-${os}-${arch}.${ext}",
+      "icon": "icons/icon.icns",
+      "darkModeSupport": true
     },
     "win": {
-      "icon": "build/icons/icon.ico"
+      "target": [
+        "nsis",
+        "msi"
+      ],
+      "artifactName": "${productName}-${version}-${os}-${arch}.${ext}",
+      "icon": "icons/icon.ico"
     },
     "linux": {
-      "icon": "build/icons"
+      "icon": "icons"
     }
   },
   "dependencies": {
+    "axios": "^0.24.0",
     "nedb": "^1.8.0",
     "v-contextmenu": "^2.8.0",
     "vue": "^2.6.10",
@@ -92,8 +118,9 @@
     "cross-spawn": "^7.0.0",
     "css-loader": "^2.1.1",
     "del": "^4.1.1",
-    "electron": "^9.0.2",
+    "electron": "^12.2.3",
     "electron-builder": "^22.7.0",
+    "electron-store": "^8.0.1",
     "eslint": "^5.16.0",
     "eslint-loader": "^2.1.2",
     "eslint-plugin-vue": "^5.2.2",
