@@ -104,7 +104,7 @@ const renderConfig = {
                     loader: 'url-loader',
                     query: {
                         limit: 10000,
-                        publicPath: '../',
+                        publicPath: './',
                         name: '[folder]/[name].[ext]'
                     }
                 }
@@ -114,6 +114,7 @@ const renderConfig = {
                 loader: 'url-loader',
                 options: {
                     limit: 10000,
+                    publicPath: './',
                     name: '[folder]/[name].[ext]'
                 }
             },
@@ -123,7 +124,7 @@ const renderConfig = {
                     loader: 'url-loader',
                     query: {
                         limit: 10000,
-                        publicPath: '../',
+                        publicPath: './',
                         name: '[folder]/[name].[ext]'
                     }
                 }
@@ -209,6 +210,18 @@ const renderConfig = {
                 collapseWhitespace: true,
                 removeAttributeQuotes: true,
                 removeComments: true
+            },
+            templateParameters(compilation, assets, options) {
+                return {
+                    compilation: compilation,
+                    webpack: compilation.getStats().toJson(),
+                    webpackConfig: compilation.options,
+                    htmlWebpackPlugin: {
+                        files: assets,
+                        options: options
+                    },
+                    process,
+                };
             },
             dateTime: (new Date()).getTime(),
             nodeModules: process.env.ENV !== 'prod' ? path.resolve(__dirname, '../node_modules') : false,
