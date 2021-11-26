@@ -118,7 +118,7 @@
     "cross-spawn": "^7.0.0",
     "css-loader": "^2.1.1",
     "del": "^4.1.1",
-    "electron": "^12.2.3",
+    "electron": "^11.5.0",
     "electron-builder": "^22.7.0",
     "electron-store": "^8.0.1",
     "eslint": "^5.16.0",
