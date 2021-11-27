@@ -10,7 +10,7 @@
 <script>
 import { Divider, Card } from 'element-ui';
 import MouseRight from '@components/MouseRight';
-import { TipSuccess, TipError, TipWarning, TipInfo } from '@common/tip';
+import { successTip, errorTip, warnTip, infoTip } from '@common/tip';
 import logger from '@common/logger';
 export default {
     name: 'MouseRightDemo', // 右键菜单
@@ -24,25 +24,25 @@ export default {
             mouseData: [{
                 text: '成功',
                 action: (val) => {
-                    TipSuccess('你点击了成功菜单！');
+                    successTip('你点击了成功菜单！');
                     logger.success(JSON.stringify(val));
                 },
             }, {
                 text: '错误',
                 action: (val) => {
-                    TipError('你点击了错误菜单！');
+                    errorTip('你点击了错误菜单！');
                     logger.error(JSON.stringify(val));
                 },
             }, {
                 text: '警告',
                 action: (val) => {
-                    TipWarning('你点击了警告菜单！');
+                    warnTip('你点击了警告菜单！');
                     logger.warn(JSON.stringify(val));
                 },
             }, {
                 text: 'info',
                 action: (val) => {
-                    TipInfo('你点击了info！');
+                    infoTip('你点击了info！');
                     logger.info(JSON.stringify(val));
                 },
             }],
@@ -62,7 +62,7 @@ export default {
         height: 200px;
         margin: @gap-md;
         padding: @gap;
-        background-color: @gray;
+        background-color: @gray-light;
     }
 }
 </style>

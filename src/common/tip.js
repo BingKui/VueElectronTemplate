@@ -1,35 +1,50 @@
 import { Message } from 'element-ui';
-console.log(Message);
-// 在调用 Vue.use 前，给 Message 添加 install 方法
-// Message.install = function (Vue, options) {
-//     Vue.prototype.$message = Message;
-// };
+
+const Msg = Message;
+
 const baseConfig = {
-    top: 25,
     duration: 3000,
 };
-export const TipInfo = (text='提示') => {
-    Message.info({
-        message: text,
-        ...baseConfig,
-    });
-};
-export const TipSuccess = (text='成功') => {
-    Message.success({
+
+/**
+ * 提示信息
+ * @param {String} text 提示内容
+ */
+export const infoTip = (text='提示') => {
+    Msg.info({
         message: text,
         ...baseConfig,
     });
 };
 
-export const TipError = (text='错误') => {
-    Message.error({
+/**
+ * 提示成功信息
+ * @param {String} text 提示内容
+ */
+export const successTip = (text='成功') => {
+    Msg.success({
         message: text,
         ...baseConfig,
     });
 };
 
-export const TipWarning = (text='警告') => {
-    Message.warning({
+/**
+ * 提示错误信息
+ * @param {String} text 提示内容
+ */
+export const errorTip = (text='错误') => {
+    Msg.error({
+        message: text,
+        ...baseConfig,
+    });
+};
+
+/**
+ * 提示警告信息
+ * @param {String} text 提示内容
+ */
+export const warnTip = (text='警告') => {
+    Msg.warning({
         message: text,
         ...baseConfig,
     });

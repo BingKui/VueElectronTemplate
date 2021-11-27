@@ -3,23 +3,26 @@
          <ScrollBar class="main-container" axis="y">
             <Divider content-position="left">滚动条-y</Divider>
             <ScrollBar class="v-container">
-                <div class="line-text">测试数据-1</div>
-                <div class="line-text">测试数据-2</div>
-                <div class="line-text">测试数据-3</div>
-                <div class="line-text">测试数据-4</div>
-                <div class="line-text">测试数据-5</div>
-                <div class="line-text">测试数据-6</div>
-                <div class="line-text">测试数据-7</div>
-                <div class="line-text">测试数据-8</div>
-                <div class="line-text">测试数据-9</div>
-                <div class="line-text">测试数据-10</div>
-                <div class="line-text">测试数据-11</div>
-                <div class="line-text">测试数据-12</div>
-                <div class="line-text">测试数据-13</div>
+                <div class="font-size-sm padding-all background-white margin-all-sm">测试数据-1</div>
+                <div class="font-size-sm padding-all background-white margin-all-sm">测试数据-2</div>
+                <div class="font-size-sm padding-all background-white margin-all-sm">测试数据-3</div>
+                <div class="font-size-sm padding-all background-white margin-all-sm">测试数据-4</div>
+                <div class="font-size-sm padding-all background-white margin-all-sm">测试数据-5</div>
+                <div class="font-size-sm padding-all background-white margin-all-sm">测试数据-6</div>
+                <div class="font-size-sm padding-all background-white margin-all-sm">测试数据-7</div>
+                <div class="font-size-sm padding-all background-white margin-all-sm">测试数据-8</div>
+                <div class="font-size-sm padding-all background-white margin-all-sm">测试数据-9</div>
+                <div class="font-size-sm padding-all background-white margin-all-sm">测试数据-10</div>
+                <div class="font-size-sm padding-all background-white margin-all-sm">测试数据-11</div>
+                <div class="font-size-sm padding-all background-white margin-all-sm">测试数据-12</div>
+                <div class="font-size-sm padding-all background-white margin-all-sm">测试数据-13</div>
             </ScrollBar>
             <Divider content-position="left">滚动条-x</Divider>
             <ScrollBar class="v-container" axis="x">
-                <div class="line-text long-width">测试数据.....</div>
+                <div class="font-size-sm padding-all background-white long-width margin-top-sm">测试数据.....</div>
+                <div class="font-size-sm padding-all background-white long-width margin-top-sm">测试数据.....</div>
+                <div class="font-size-sm padding-all background-white long-width margin-top-sm">测试数据.....</div>
+                <div class="font-size-sm padding-all background-white long-width margin-top-sm">测试数据.....</div>
             </ScrollBar>
         </ScrollBar>
     </div>
@@ -48,16 +51,10 @@ export default {
     .v-container {
         margin: @gap-md;
         height: 200px;
-        background-color: @gray;
+        background-color: @gray-light;
         font-size: @font-size-sm;
-        .line-text {
-            font-size: @font-size;
-            text-indent: @gap;
-            margin: @gap-sm 0;
-        }
         .long-width {
-            width: 1000px;
-            background-color: @warn;
+            width: 700px;
         }
     }
 }

@@ -1,7 +1,7 @@
 import { app, Tray } from 'electron' // eslint-disable-line
 import { isDev, mainURL, createMainWindow, createTrayMenu, trayIcon,
     AddDataBase, AddAppUpdate, AddAppSetting, AddTray, AddMenuList } from './utils';
-
+import DB_NAME from '@constants/db';
 let mainWindow, tray;
 const initAppWindow = () => {
     console.log('执行到这里');
@@ -20,7 +20,9 @@ app.on('ready', () => {
     // 初始化窗口
     initAppWindow();
     // 添加测试数据库
-    AddDataBase('test');
+    for (let key in DB_NAME) {
+        AddDataBase(DB_NAME[key]);
+    }
     // 添加设置支持
     AddAppSetting(app, mainWindow);
     // 添加自定义菜单

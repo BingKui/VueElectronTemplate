@@ -1,10 +1,10 @@
 <template>
     <div class="v-home">
         <Divider content-position="left">项目简介</Divider>
-        <div class="desc">此项目为vet项目的iview模板，已实现iview的配置，可直接使用。</div>
+        <div class="font-size-sm text-content">此项目为vet项目的 element-ui 模板，已实现 element-ui 的配置，可直接使用。</div>
         <Divider content-position="left">项目依赖项</Divider>
-        <div class="dependencies">
-            <div class="dependencies-item">iview: v3.5.0</div>
+        <div class="dependencies text-content font-size-sm">
+            <div class="dependencies-item">element-ui: v2.15.7</div>
             <div class="dependencies-item">nedb: v1.8.0</div>
             <div class="dependencies-item">v-contextmenu: v2.8.0</div>
             <div class="dependencies-item">vue: v2.6.10</div>
@@ -13,9 +13,9 @@
             <div class="dependencies-item">vuex: v3.1.1</div>
         </div>
         <Divider content-position="left">开源声明</Divider>
-        <div class="license">
+        <div class="license font-size-sm text-content">
             <div class="license-name">MIT License</div>
-            <div class="license-author">Copyright (c) 2019 康兵奎</div>
+            <div class="license-author">Copyright (c) 2019-2021 康兵奎</div>
             <div class="license-part">Permission is hereby granted, free of charge, to any person obtaining a copy<br />
             of this software and associated documentation files (the "Software"), to deal<br />
             in the Software without restriction, including without limitation the rights<br />
@@ -63,8 +63,7 @@ export default {
         .license-name,
         .license-author,
         .license-part {
-            font-size: @font-size-sm;
-            margin-bottom: @gap-md;
+            margin-bottom: @gap;
         }
     }
 }

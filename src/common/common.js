@@ -7,5 +7,12 @@ import { clipboard } from 'electron';
  * @param {String} text 需要复制的内容
  */
 export const copyText = (text) => {
-    clipboard.writeText(text);
+    clipboard.writeText(text, 'c-t');
+};
+
+/**
+ * 粘贴文本
+ */
+export const pasteText = () => {
+    return clipboard.readText('c-t');
 };

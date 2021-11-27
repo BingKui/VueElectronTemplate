@@ -1,47 +1,76 @@
 import { Notification } from 'element-ui';
 import { shell } from 'electron';
 
-const baseConfig = {
-    offset: 20,
-    duration: 3000,
-};
-export const NoticeLocal = {
-    open: (title, desc) => {
-        Notification({
-            ...baseConfig,
-            title,
-            message: desc,
-        });
-    },
-    info: (title, desc) => {
-        Notification.info({
-            ...baseConfig,
-            title,
-            message: desc,
-        });
-    },
-    success: (title, desc) => {
-        Notification.success({
-            ...baseConfig,
-            title,
-            message: desc,
-        });
+const Notice = Notification;
 
-    },
-    error: (title, desc) => {
-        Notification.error({
-            ...baseConfig,
-            title,
-            message: desc,
-        });
-    },
-    warn: (title, desc) => {
-        Notification.warning({
-            ...baseConfig,
-            title,
-            message: desc,
-        });
-    },
+const baseConfig = {
+    duration: 3000,
+    showClose: false,
+};
+
+/**
+ * 通知信息
+ * @param {String} message 提示信息
+ * @param {String} title 提示标题
+ */
+export const notice = (message, title='提示') => {
+    Notice({
+        title,
+        message,
+        ...baseConfig,
+    });
+};
+
+/**
+ * 通知一般信息
+ * @param {String} message 提示信息
+ * @param {String} title 提示标题
+ */
+export const infoNotice = (message, title='提示') => {
+    Notice.info({
+        title,
+        message,
+        ...baseConfig,
+    });
+};
+
+/**
+ * 通知成功信息
+ * @param {String} message 提示信息
+ * @param {String} title 提示标题
+ */
+export const successNotice = (message, title='成功') => {
+    Notice.success({
+        title,
+        message,
+        ...baseConfig,
+    });
+};
+
+/**
+ * 通知错误信息
+ * @param {String} message 提示信息
+ * @param {String} title 提示标题
+ */
+export const errorNotice = (message, title='错误') => {
+    Notice.error({
+        title,
+        message,
+        ...baseConfig,
+    });
+};
+
+/**
+ * 通知警告信息
+ * @param {String} message 提示信息
+ * @param {String} title 提示标题
+ */
+export const warnNotice = (message, title='警告') => {
+    Notice.warning({
+        title,
+        message,
+        ...baseConfig,
+    });
 };
 
 /**
