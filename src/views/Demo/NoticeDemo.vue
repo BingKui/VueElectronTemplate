@@ -1,18 +1,18 @@
 <template>
     <div class="v-notice-demo">
-        <Divider Divider content-position="left">系统通知</Divider>
+        <Divider orientation="left">系统通知</Divider>
         <Button @click="openSys">系统通知</Button>
         <Button type="primary" @click="openSysLink">系统通知-连接</Button>
-        <Divider Divider content-position="left">软件通知</Divider>
+        <Divider orientation="left">软件通知</Divider>
         <Button @click="openNormal">normal</Button>
         <Button type="primary" @click="openInfo">info</Button>
         <Button type="success" @click="openSuccess">success</Button>
-        <Button type="danger" @click="openError">error</Button>
+        <Button type="error" @click="openError">error</Button>
         <Button type="warning" @click="openWarn">warn</Button>
-        <Divider Divider content-position="left">消息提醒</Divider>
+        <Divider orientation="left">消息提醒</Divider>
         <Button type="info" @click="openInfoTip">info</Button>
         <Button type="success" @click="openSuccessTip">success</Button>
-        <Button type="danger" @click="openErrorTip">error</Button>
+        <Button type="error" @click="openErrorTip">error</Button>
         <Button type="warning" @click="openWarnTip">warn</Button>
     </div>
 </template>

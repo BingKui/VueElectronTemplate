@@ -1,6 +1,6 @@
 <template>
     <div class="v-mouse-right-demo">
-        <Divider content-position="left">右键菜单</Divider>
+        <Divider orientation="left">右键菜单</Divider>
         <MouseRight class="right-mouse-el flex-row-center" :mouseData="mouseData" :mouseKey="value">
             <Card>右键点击</Card>
         </MouseRight>

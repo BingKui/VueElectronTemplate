@@ -1,7 +1,7 @@
 <template>
     <div class="v-scroll-demo">
          <ScrollBar class="main-container" axis="y">
-            <Divider content-position="left">滚动条-y</Divider>
+            <Divider orientation="left">滚动条-y</Divider>
             <ScrollBar class="v-container">
                 <div class="font-size-sm padding-all background-white margin-all-sm">测试数据-1</div>
                 <div class="font-size-sm padding-all background-white margin-all-sm">测试数据-2</div>
@@ -17,7 +17,7 @@
                 <div class="font-size-sm padding-all background-white margin-all-sm">测试数据-12</div>
                 <div class="font-size-sm padding-all background-white margin-all-sm">测试数据-13</div>
             </ScrollBar>
-            <Divider content-position="left">滚动条-x</Divider>
+            <Divider orientation="left">滚动条-x</Divider>
             <ScrollBar class="v-container" axis="x">
                 <div class="font-size-sm padding-all background-white long-width margin-top-sm">测试数据.....</div>
                 <div class="font-size-sm padding-all background-white long-width margin-top-sm">测试数据.....</div>

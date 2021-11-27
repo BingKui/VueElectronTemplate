@@ -1,6 +1,6 @@
 <template>
     <div class="v-local-db-demo">
-        <Divider content-position="left">本地数据库</Divider>
+        <Divider orientation="left">本地数据库</Divider>
         <div class="db-list">
             <Card class="db-item" v-for="(item, index) in dataList" :key="index">{{item.value}}
                 <Button type="danger" size="mini" @click="() => deleteAction(item)">删除</Button>

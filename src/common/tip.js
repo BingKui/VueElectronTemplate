@@ -3,7 +3,8 @@ import { Message } from 'view-design';
 const Msg = Message;
 
 const baseConfig = {
-    duration: 3000,
+    top: 25,
+    duration: 3
 };
 
 /**
@@ -12,7 +13,7 @@ const baseConfig = {
  */
 export const infoTip = (text='提示') => {
     Msg.info({
-        message: text,
+        content: text,
         ...baseConfig,
     });
 };
@@ -23,7 +24,7 @@ export const infoTip = (text='提示') => {
  */
 export const successTip = (text='成功') => {
     Msg.success({
-        message: text,
+        content: text,
         ...baseConfig,
     });
 };
@@ -34,7 +35,7 @@ export const successTip = (text='成功') => {
  */
 export const errorTip = (text='错误') => {
     Msg.error({
-        message: text,
+        content: text,
         ...baseConfig,
     });
 };
@@ -45,7 +46,7 @@ export const errorTip = (text='错误') => {
  */
 export const warnTip = (text='警告') => {
     Msg.warning({
-        message: text,
+        content: text,
         ...baseConfig,
     });
 };

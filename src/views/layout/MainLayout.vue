@@ -1,17 +1,17 @@
 <template>
     <div class="v-main-layout">
-        <Container>
-            <Aside class="left-silder" width="200px">
+        <Layout>
+            <Sider class="left-silder">
                 <MainMenu />
-            </Aside>
-        </Container>
-        <Container :style="{marginLeft: '200px'}">
-            <Main class="right-content">
+            </Sider>
+        </Layout>
+        <Layout :style="{marginLeft: '200px'}">
+            <Content class="right-content">
                 <ScrollBar class="main-content-scrollbar">
                     <slot></slot>
                 </ScrollBar>
-            </Main>
-        </Container>
+            </Content>
+        </Layout>
     </div>
 </template>
 
@@ -22,9 +22,12 @@ import MainMenu from './MainMenu';
 export default {
     name: 'MainLayout',
     components: {
+        Sider,
         MainMenu,
+        Header,
+        Layout,
+        Content,
         ScrollBar,
-        Aside, Container, Main,
     },
 };
 </script>

@@ -12,7 +12,7 @@
             <div class="dependencies-item">vue-scrolly: v0.9.3</div>
             <div class="dependencies-item">vuex: v3.1.1</div>
         </div>
-        <Divider content-position="left">开源声明</Divider>
+        <Divider orientation="left">开源声明</Divider>
         <div class="license font-size-sm text-content">
             <div class="license-name">MIT License</div>
             <div class="license-author">Copyright (c) 2019-2021 康兵奎</div>

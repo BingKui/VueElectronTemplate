@@ -1,74 +1,72 @@
 import { Notice } from 'view-design';
 import { shell } from 'electron';
 
-// const Notice = Notification;
-
 const baseConfig = {
-    duration: 3000,
-    showClose: false,
+    top: 20,
+    duration: 3,
 };
 
 /**
  * 通知信息
- * @param {String} message 提示信息
+ * @param {String} desc 提示信息
  * @param {String} title 提示标题
  */
-export const notice = (message, title='提示') => {
-    Notice({
+export const notice = (desc, title='提示') => {
+    Notice.open({
         title,
-        message,
+        desc,
         ...baseConfig,
     });
 };
 
 /**
  * 通知一般信息
- * @param {String} message 提示信息
+ * @param {String} desc 提示信息
  * @param {String} title 提示标题
  */
-export const infoNotice = (message, title='提示') => {
+export const infoNotice = (desc, title='提示') => {
     Notice.info({
         title,
-        message,
+        desc,
         ...baseConfig,
     });
 };
 
 /**
  * 通知成功信息
- * @param {String} message 提示信息
+ * @param {String} desc 提示信息
  * @param {String} title 提示标题
  */
-export const successNotice = (message, title='成功') => {
+export const successNotice = (desc, title='成功') => {
     Notice.success({
         title,
-        message,
+        desc,
         ...baseConfig,
     });
 };
 
 /**
  * 通知错误信息
- * @param {String} message 提示信息
+ * @param {String} desc 提示信息
  * @param {String} title 提示标题
  */
-export const errorNotice = (message, title='错误') => {
+export const errorNotice = (desc, title='错误') => {
     Notice.error({
         title,
-        message,
+        desc,
         ...baseConfig,
     });
 };
 
 /**
  * 通知警告信息
- * @param {String} message 提示信息
+ * @param {String} desc 提示信息
  * @param {String} title 提示标题
  */
-export const warnNotice = (message, title='警告') => {
+export const warnNotice = (desc, title='警告') => {
     Notice.warning({
         title,
-        message,
+        desc,
         ...baseConfig,
     });
 };

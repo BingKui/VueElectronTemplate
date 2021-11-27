@@ -1,13 +1,14 @@
 <template>
     <div class="v-main-menu-container">
+
         <ScrollBar class="main-scroll">
-            <Menu class="v-main-menu" mode="vertical" active-text-color="#409EFF" @select="selectMenu" :default-active="menuIndex">
-                <MenuItemGroup v-for="(item, index) in MenuData" :title="item.groupName" :key="`group_${index}`">
-                    <MenuItem :class="`menu-item flex-row ${activeClass(menu.name)}`" v-for="(menu, i) in item.menuList" :name="menu.router" :key="`menu_item_${i}`" :index="`${index}-${i}`">
-                        <Icon :class="menu.icon" />
+            <Menu class="v-main-menu" theme="light" :active-name="activeName">
+                <MenuGroup v-for="(item, index) in MenuData" :title="item.groupName" :key="`group_${index}`">
+                    <MenuItem v-for="(menu, i) in item.menuList" :name="menu.router" :key="`menu_item_${i}`" :to="menu.router">
+                        <Icon :type="menu.icon" />
                         {{menu.name}}
                     </MenuItem>
-                </MenuItemGroup>
+                </MenuGroup>
             </Menu>
         </ScrollBar>
     </div>
@@ -17,22 +18,21 @@
 import { Menu, MenuGroup, MenuItem, Icon, Input } from 'view-design';
 import ScrollBar from '@components/ScrollBar';
 import { MenuList, MenuRouter } from '@router/menu';
-import { dealMenuBySearchValue } from '@common/utils';
 export default {
     name: 'MainMenu',
     components: {
         Menu,
-        Icon,
-        MenuItemGroup,
         MenuItem,
+        MenuGroup,
+        Icon,
+        Input,
         ScrollBar,
     },
     computed: {
-        activeClass() {
-            return (routeName) => {
-                const { name } = this.$route;
-                return routeName === name ? 'selected' : '';
-            };
+        activeName() {
+            const { name } = this.$route;
+            const val = MenuRouter.filter(item => item.name === name);
+            return val.length > 0 ? val[0].router : '';
         },
     },
     mounted() {
@@ -45,11 +45,6 @@ export default {
         };
     },
     methods: {
-        selectMenu(index, indexPath) {
-            const arr = `${index}`.split('-');
-            const router = MenuList[arr[0]].menuList[arr[1]].router;
-            this.$router.push(`/${router}`);
-        },
         getDefaultIndex() {
             const { name } = this.$route;
             let g_index = 0;
