@@ -1,7 +1,7 @@
 <template>
     <div class="v-mouse-right-demo">
-        <Divider orientation="left">右键菜单</Divider>
-        <MouseRight class="right-mouse-el" :mouseData="mouseData" :mouseKey="value">
+        <Divider content-position="left">右键菜单</Divider>
+        <MouseRight class="right-mouse-el flex-row-center" :mouseData="mouseData" :mouseKey="value">
             <Card>右键点击</Card>
         </MouseRight>
     </div>
@@ -10,7 +10,7 @@
 <script>
 import { Divider, Card } from 'view-design';
 import MouseRight from '@components/MouseRight';
-import { TipSuccess, TipError, TipWarning, TipLoading } from '@common/tip';
+import { successTip, errorTip, warnTip, infoTip } from '@common/tip';
 import logger from '@common/logger';
 export default {
     name: 'MouseRightDemo', // 右键菜单
@@ -24,25 +24,25 @@ export default {
             mouseData: [{
                 text: '成功',
                 action: (val) => {
-                    TipSuccess('你点击了成功菜单！');
+                    successTip('你点击了成功菜单！');
                     logger.success(JSON.stringify(val));
                 },
             }, {
                 text: '错误',
                 action: (val) => {
-                    TipError('你点击了错误菜单！');
+                    errorTip('你点击了错误菜单！');
                     logger.error(JSON.stringify(val));
                 },
             }, {
                 text: '警告',
                 action: (val) => {
-                    TipWarning('你点击了警告菜单！');
+                    warnTip('你点击了警告菜单！');
                     logger.warn(JSON.stringify(val));
                 },
             }, {
-                text: 'loading',
+                text: 'info',
                 action: (val) => {
-                    TipLoading('你点击了加载！');
+                    infoTip('你点击了info！');
                     logger.info(JSON.stringify(val));
                 },
             }],
@@ -57,13 +57,12 @@ export default {
 
 <style lang="less" scoped>
 .v-mouse-right-demo {
-    .p-h(@gap);
+    padding: 0 @gap;
     .right-mouse-el {
         height: 200px;
-        .m(@gap-md);
-        .p(@gap);
-        .flex-row-center();
-        background-color: @gray;
+        margin: @gap-md;
+        padding: @gap;
+        background-color: @gray-light;
     }
 }
 </style>

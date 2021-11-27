@@ -12,10 +12,10 @@
             <div class="dependencies-item">vue-scrolly: v0.9.3</div>
             <div class="dependencies-item">vuex: v3.1.1</div>
         </div>
-        <Divider orientation="left">开源声明</Divider>
-        <div class="license">
+        <Divider content-position="left">开源声明</Divider>
+        <div class="license font-size-sm text-content">
             <div class="license-name">MIT License</div>
-            <div class="license-author">Copyright (c) 2019 康兵奎</div>
+            <div class="license-author">Copyright (c) 2019-2021 康兵奎</div>
             <div class="license-part">Permission is hereby granted, free of charge, to any person obtaining a copy<br />
             of this software and associated documentation files (the "Software"), to deal<br />
             in the Software without restriction, including without limitation the rights<br />
@@ -47,24 +47,23 @@ export default {
 
 <style lang="less" scoped>
 .v-home {
-    .p-h(@gap);
+    padding: 0 @gap;
     .desc {
         text-indent: 20px;
     }
     .dependencies {
-        .p-l(20px);
+        padding-left: 20px;
         .dependencies-item {
-            .font-size();
-            .m-v(3px);
+            font-size: @font-size;
+            margin: 3px 0;
         }
     }
     .license {
-        .p-l(20px);
+        padding-left: 20px;
         .license-name,
         .license-author,
         .license-part {
-            .font-size-sm();
-            .m-b(@gap-md);
+            margin-bottom: @gap;
         }
     }
 }

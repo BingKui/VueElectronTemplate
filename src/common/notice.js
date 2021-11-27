@@ -1,43 +1,76 @@
 import { Notice } from 'view-design';
 import { shell } from 'electron';
 
-const baseConfig = {
-    top: 20,
-    duration: 3,
-};
-Notice.config(baseConfig);
-export const NoticeLocal = {
-    open: (title, desc) => {
-        Notice.open({
-            title,
-            desc,
-        });
-    },
-    info: (title, desc) => {
-        Notice.info({
-            title,
-            desc,
-        });
-    },
-    success: (title, desc) => {
-        Notice.success({
-            title,
-            desc,
-        });
+// const Notice = Notification;
 
-    },
-    error: (title, desc) => {
-        Notice.error({
-            title,
-            desc,
-        });
-    },
-    warn: (title, desc) => {
-        Notice.warning({
-            title,
-            desc,
-        });
-    },
+const baseConfig = {
+    duration: 3000,
+    showClose: false,
+};
+
+/**
+ * 通知信息
+ * @param {String} message 提示信息
+ * @param {String} title 提示标题
+ */
+export const notice = (message, title='提示') => {
+    Notice({
+        title,
+        message,
+        ...baseConfig,
+    });
+};
+
+/**
+ * 通知一般信息
+ * @param {String} message 提示信息
+ * @param {String} title 提示标题
+ */
+export const infoNotice = (message, title='提示') => {
+    Notice.info({
+        title,
+        message,
+        ...baseConfig,
+    });
+};
+
+/**
+ * 通知成功信息
+ * @param {String} message 提示信息
+ * @param {String} title 提示标题
+ */
+export const successNotice = (message, title='成功') => {
+    Notice.success({
+        title,
+        message,
+        ...baseConfig,
+    });
+};
+
+/**
+ * 通知错误信息
+ * @param {String} message 提示信息
+ * @param {String} title 提示标题
+ */
+export const errorNotice = (message, title='错误') => {
+    Notice.error({
+        title,
+        message,
+        ...baseConfig,
+    });
+};
+
+/**
+ * 通知警告信息
+ * @param {String} message 提示信息
+ * @param {String} title 提示标题
+ */
+export const warnNotice = (message, title='警告') => {
+    Notice.warning({
+        title,
+        message,
+        ...baseConfig,
+    });
 };
 
 /**
@@ -46,14 +79,13 @@ export const NoticeLocal = {
  * @param {String} body 通知内容
  * @param {String} href 点击跳转的链接地址
  */
-export const NoticeSystem = (title, body, href='') => {
-    if (!body) {
+export const sysNotice = (title, body, href='') => {
+    if (!title && !body) {
         return;
     }
     const _content = Object.assign({
-        title: 'VET System Notification',
+        title: 'Vet系统通知!',
         body: '',
-        icon: '../assets/icon/success.svg',
         href: '',
     }, {
         title,

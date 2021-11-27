@@ -1,4 +1,4 @@
-const { readMarkdownFile } = require('@node');
+const { readMarkdownFile } = require('@/node');
 
 /**
  * 加载markdown内容

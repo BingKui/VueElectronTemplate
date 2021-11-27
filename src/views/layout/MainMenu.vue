@@ -1,13 +1,13 @@
 <template>
     <div class="v-main-menu-container">
         <ScrollBar class="main-scroll">
-            <Menu class="v-main-menu" theme="light" :active-name="activeName">
-                <MenuGroup v-for="(item, index) in MenuData" :title="item.groupName" :key="`group_${index}`">
-                    <MenuItem v-for="(menu, i) in item.menuList" :name="menu.router" :key="`menu_item_${i}`" :to="menu.router">
-                        <Icon :type="menu.icon" />
+            <Menu class="v-main-menu" mode="vertical" active-text-color="#409EFF" @select="selectMenu" :default-active="menuIndex">
+                <MenuItemGroup v-for="(item, index) in MenuData" :title="item.groupName" :key="`group_${index}`">
+                    <MenuItem :class="`menu-item flex-row ${activeClass(menu.name)}`" v-for="(menu, i) in item.menuList" :name="menu.router" :key="`menu_item_${i}`" :index="`${index}-${i}`">
+                        <Icon :class="menu.icon" />
                         {{menu.name}}
                     </MenuItem>
-                </MenuGroup>
+                </MenuItemGroup>
             </Menu>
         </ScrollBar>
     </div>
@@ -22,23 +22,51 @@ export default {
     name: 'MainMenu',
     components: {
         Menu,
-        MenuItem,
-        MenuGroup,
         Icon,
-        Input,
+        MenuItemGroup,
+        MenuItem,
         ScrollBar,
     },
     computed: {
-        activeName() {
-            const { name } = this.$route;
-            const val = MenuRouter.filter(item => item.name === name);
-            return val.length > 0 ? val[0].router : '';
+        activeClass() {
+            return (routeName) => {
+                const { name } = this.$route;
+                return routeName === name ? 'selected' : '';
+            };
         },
+    },
+    mounted() {
+        this.menuIndex = this.getDefaultIndex();
     },
     data() {
         return {
             MenuData: MenuList,
+            menuIndex: '0-0',
         };
+    },
+    methods: {
+        selectMenu(index, indexPath) {
+            const arr = `${index}`.split('-');
+            const router = MenuList[arr[0]].menuList[arr[1]].router;
+            this.$router.push(`/${router}`);
+        },
+        getDefaultIndex() {
+            const { name } = this.$route;
+            let g_index = 0;
+            let i_index = 0;
+            for (let i = 0; i < MenuList.length; i++) {
+                const arr = MenuList[i].menuList;
+                for (let j = 0; j < arr.length; j++) {
+                    const item = arr[j];
+                    if (name === item.router) {
+                        g_index = i;
+                        i_index = j;
+                        break;
+                    }
+                }
+            }
+            return `${g_index}-${i_index}`;
+        },
     },
 };
 </script>
@@ -47,15 +75,16 @@ export default {
 .v-main-menu-container {
     height: 100vh;
     -webkit-app-region: drag;
+    overflow: hidden;
     .main-scroll {
-        .p-t(20px);
-        height: 100vh;
+        padding-top: 20px;
+        height: calc(100vh - 20px);
         position: relative;
         &::after {
             content: '';
             display: block;
             width: 1px;
-            height: 100%;
+            height: 100vh;
             position: absolute;
             background-color: #dedee2;
             top: 0;
@@ -66,6 +95,12 @@ export default {
     }
     .v-main-menu {
         width: 100% !important;
+        .menu-item {
+            align-items: center;
+            &.is-active {
+                background-color: #ecf5ff;
+            }
+        }
     }
 }
 </style>
