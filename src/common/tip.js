@@ -1,5 +1,9 @@
 import { Message } from 'element-ui';
-
+console.log(Message);
+// 在调用 Vue.use 前，给 Message 添加 install 方法
+// Message.install = function (Vue, options) {
+//     Vue.prototype.$message = Message;
+// };
 const baseConfig = {
     top: 25,
     duration: 3000,

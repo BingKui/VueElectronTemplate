@@ -23,6 +23,6 @@ export default {
 
 <style lang="less" scoped>
 .v-load-markdown-file {
-    .p-h(@gap);
+    padding: 0 @gap;
 }
 </style>

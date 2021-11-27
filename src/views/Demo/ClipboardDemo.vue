@@ -37,9 +37,9 @@ export default {
 
 <style lang="less" scoped>
 .v-clipboard-demo {
-    .p-h(@gap);
+    padding: 0 @gap;
     .el-button {
-        .m-t(@gap);
+        margin-top: @gap;
     }
 }
 </style>

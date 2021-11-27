@@ -85,7 +85,7 @@
   },
   "dependencies": {
     "axios": "^0.24.0",
-    "element-ui": "^2.15.6",
+    "element-ui": "^2.15.7",
     "nedb": "^1.8.0",
     "v-contextmenu": "^2.8.1",
     "vue": "^2.6.14",

@@ -40,20 +40,20 @@ export default {
 <style lang="less" scoped>
 .v-scroll-demo {
     font-size: 20px;
-    .p-h(@gap);
+    padding: 0 @gap;
     .main-container {
         height: 100vh;
         width: 100%;
     }
     .v-container {
-        .m(@gap-md);
+        margin: @gap-md;
         height: 200px;
         background-color: @gray;
-        .font-size-sm();
+        font-size: @font-size-sm;
         .line-text {
-            .font-size();
+            font-size: @font-size;
             text-indent: @gap;
-            .m-v(@gap-sm);
+            margin: @gap-sm 0;
         }
         .long-width {
             width: 1000px;

@@ -47,24 +47,24 @@ export default {
 
 <style lang="less" scoped>
 .v-home {
-    .p-h(@gap);
+    padding: 0 @gap;
     .desc {
         text-indent: 20px;
     }
     .dependencies {
-        .p-l(20px);
+        padding-left: 20px;
         .dependencies-item {
-            .font-size();
-            .m-v(3px);
+            font-size: @font-size;
+            margin: 3px 0;
         }
     }
     .license {
-        .p-l(20px);
+        padding-left: 20px;
         .license-name,
         .license-author,
         .license-part {
-            .font-size-sm();
-            .m-b(@gap-md);
+            font-size: @font-size-sm;
+            margin-bottom: @gap-md;
         }
     }
 }

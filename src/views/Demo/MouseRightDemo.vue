@@ -1,7 +1,7 @@
 <template>
     <div class="v-mouse-right-demo">
         <Divider content-position="left">右键菜单</Divider>
-        <MouseRight class="right-mouse-el" :mouseData="mouseData" :mouseKey="value">
+        <MouseRight class="right-mouse-el flex-row-center" :mouseData="mouseData" :mouseKey="value">
             <Card>右键点击</Card>
         </MouseRight>
     </div>
@@ -57,12 +57,11 @@ export default {
 
 <style lang="less" scoped>
 .v-mouse-right-demo {
-    .p-h(@gap);
+    padding: 0 @gap;
     .right-mouse-el {
         height: 200px;
-        .m(@gap-md);
-        .p(@gap);
-        .flex-row-center();
+        margin: @gap-md;
+        padding: @gap;
         background-color: @gray;
     }
 }

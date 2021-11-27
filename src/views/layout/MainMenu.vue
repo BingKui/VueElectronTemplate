@@ -3,7 +3,7 @@
         <ScrollBar class="main-scroll">
             <Menu class="v-main-menu" mode="vertical" active-text-color="#409EFF" @select="selectMenu" :default-active="menuIndex">
                 <MenuItemGroup v-for="(item, index) in MenuData" :title="item.groupName" :key="`group_${index}`">
-                    <MenuItem :class="`menu-item ${activeClass(menu.name)}`" v-for="(menu, i) in item.menuList" :name="menu.router" :key="`menu_item_${i}`" :index="`${index}-${i}`">
+                    <MenuItem :class="`menu-item flex-row ${activeClass(menu.name)}`" v-for="(menu, i) in item.menuList" :name="menu.router" :key="`menu_item_${i}`" :index="`${index}-${i}`">
                         <Icon :class="menu.icon" />
                         {{menu.name}}
                     </MenuItem>
@@ -77,7 +77,7 @@ export default {
     -webkit-app-region: drag;
     overflow: hidden;
     .main-scroll {
-        .p-t(20px);
+        padding-top: 20px;
         height: calc(100vh - 20px);
         position: relative;
         &::after {
@@ -96,7 +96,6 @@ export default {
     .v-main-menu {
         width: 100% !important;
         .menu-item {
-            .flex();
             align-items: center;
             &.is-active {
                 background-color: #ecf5ff;

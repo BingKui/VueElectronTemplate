@@ -49,6 +49,6 @@ export default {
 
 <style lang="less" scoped>
 .v-notice-demo {
-    .p-h(@gap);
+    padding: 0 @gap;
 }
 </style>

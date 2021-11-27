@@ -42,7 +42,7 @@ app.on('ready', () => {
         });
     }
     // 支持更新
-    AddAppUpdate(mainWindow);
+    // AddAppUpdate(mainWindow);
 });
 
 app.on('window-all-closed', () => {

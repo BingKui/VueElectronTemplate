@@ -53,15 +53,15 @@ export default {
 
 <style lang="less" scoped>
 .v-local-db-demo {
-    .p-h(@gap);
+    padding: 0 @gap;
     .el-button {
-        .m-v(@gap);
+        margin: @gap 0 ;
     }
     .db-list {
         .db-item {
-            .m-b(@gap-sm);
+            margin-bottom: @gap-sm;
             &:last-child {
-                .m-b(0);
+                margin-bottom: 0;
             }
         }
     }

@@ -53,7 +53,7 @@ export default {
     .right-content {
         overflow: hidden;
         height: @content-height;
-        .p(0);
+        padding: 0;
         .main-content-scrollbar {
             height: @content-height;
         }
