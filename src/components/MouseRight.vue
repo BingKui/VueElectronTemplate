@@ -36,16 +36,15 @@ export default {
 
 <style lang="less" scoped>
 .v-contextmenu {
-    .p(0);
+    padding: 0;
     border: none;
     overflow: hidden;
     .v-contextmenu-divider {
-        .m(0);
+        margin: 0;
     }
     .v-contextmenu-item {
         min-width: 50px;
-        .p-h(@gap-md);
-        .p-v(@gap);
+        padding: @gap @gap-md;
     }
 }
 </style>

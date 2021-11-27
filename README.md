@@ -10,15 +10,17 @@
 
 ## 环境
 
-Vue 2 + Vue-Router + Vuex + Electron@5 + Webpack 4
+Vue 2 + Vue-Router + Vuex + Electron@12 + Webpack 4
 
 ## 项目依赖环境
 
 - nodejs: v10.10.0
-- electron: v5.0.1
+- electron: v12.2.3
 - vue: v2.6.10
 - vuex: v3.1.1
 - vue-router: v3.0.6
+- axios: v0.24.0
+- nedb: v1.8.0
 
 ## 开发
 
@@ -32,19 +34,23 @@ npm install
 npm run dev
 ```
 
-## 计划
+## 基础模板功能
 
-- [x] 系统通知封装
-- [ ] 系统托盘
-- [ ] 拖拽组件
-- [ ] 自动更新，需要证书
-- [x] 粘贴板操作
-- [x] 系统快捷键
-- [x] 增加菜单
-- [x] 增加配置项
-- [x] 增加本地数据库支持
+- 系统通知
+- 系统托盘
+- 自动更新
+- 系统设置
+- 自定义菜单配置
+- 本地数据库支持
+- 快捷键配置
+- 自定义滚动条模块
+- 右键菜单
+- 自动打包发布（Windows & Mac），GitHub Action
+- 支持M1芯片
 
 ## 项目自带组件
 
+- Button: 按钮组件
+- Progress: 进度条组件
 - ScrollBar: 自定义滚动条组件
 - MouseRight: 右键菜单组件

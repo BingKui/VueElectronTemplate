@@ -3,13 +3,9 @@
 import { clipboard } from 'electron';
 
 /**
- * 复制内容到粘贴板
+ * 复制文本内容到粘贴板
  * @param {String} text 需要复制的内容
  */
-export const Copy = (text) => {
-    clipboard.writeText(text, 'c-t');
-};
-
-export const PasteValue = () => {
-    return clipboard.readText('c-t');
+export const copyText = (text) => {
+    clipboard.writeText(text);
 };

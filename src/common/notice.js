@@ -50,14 +50,13 @@ export const NoticeLocal = {
  * @param {String} body 通知内容
  * @param {String} href 点击跳转的链接地址
  */
-export const NoticeSystem = (title, body, href='') => {
-    if (!body) {
+export const sysNotice = (title, body, href='') => {
+    if (!title && !body) {
         return;
     }
     const _content = Object.assign({
-        title: 'VET System Notification',
+        title: 'Vet系统通知!',
         body: '',
-        icon: '../assets/icon/success.svg',
         href: '',
     }, {
         title,
