@@ -11,30 +11,30 @@ import ClipboardDemo from '@views/Demo/ClipboardDemo';
 export const MenuList = [{
     groupName: 'Main', // 分组名称
     menuList: [{
-        icon: 'el-icon-house', // 图标
+        icon: 'ios-home-outline', // 图标
         name: '主页', // 菜单名称
         router: 'main-home', // 菜单路由
     }],
 }, {
     groupName: 'Demo', // 分组名称
     menuList: [{
-        icon: 'el-icon-umbrella', // 图标
+        icon: 'ios-albums-outline', // 图标
         name: '滚动组件', // 菜单名称
         router: 'demo-scroll', // 菜单路由
     }, {
-        icon: 'el-icon-mouse', // 图标
+        icon: 'ios-menu', // 图标
         name: '右键菜单', // 菜单名称
         router: 'demo-mouse-right', // 菜单路由
     }, {
-        icon: 'el-icon-collection', // 图标
+        icon: 'ios-cube-outline', // 图标
         name: '本地数据库', // 菜单名称
         router: 'demo-local-db', // 菜单路由
     }, {
-        icon: 'el-icon-message', // 图标
+        icon: 'ios-notifications-outline', // 图标
         name: '通知&提示', // 菜单名称
         router: 'demo-notice', // 菜单路由
     }, {
-        icon: 'el-icon-document-copy', // 图标
+        icon: 'ios-copy-outline', // 图标
         name: '粘贴板', // 菜单名称
         router: 'demo-clipboard', // 菜单路由
     }],
