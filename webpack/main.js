@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const WebpackNotifierPlugin = require('webpack-notifier');
 
 const mainConfig = {
     target: 'electron-main',
@@ -69,6 +70,11 @@ const mainConfig = {
     },
     plugins: [
         new webpack.NoEmitOnErrorsPlugin(),
+        new WebpackNotifierPlugin({
+            title: '主进程',
+            emoji: true,
+            contentImage: path.resolve(__dirname, '../icons/icon.png'),
+        }),
     ],
     resolve: {
         alias: {

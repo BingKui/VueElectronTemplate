@@ -20,6 +20,8 @@ const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const FirendlyErrorePlugin = require('friendly-errors-webpack-plugin');
 // 清理插件
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+// 打包提示
+const WebpackNotifierPlugin = require('webpack-notifier');
 
 // 是否是正式环境
 const isProd = process.env.ENV === 'prod';
@@ -237,6 +239,12 @@ const renderConfig = {
         // }),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoEmitOnErrorsPlugin(),
+        new WebpackNotifierPlugin({
+            title: '渲染进程',
+            emoji: true,
+            alwaysNotify: true,
+            contentImage: path.resolve(__dirname, '../icons/icon.png'),
+        }),
     ],
 };
 
