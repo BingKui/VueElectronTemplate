@@ -1,6 +1,6 @@
 import { app, Tray } from 'electron' // eslint-disable-line
 import { isDev, mainURL, createMainWindow, createTrayMenu, trayIcon,
-    AddDataBase, AddAppUpdate, AddAppSetting, AddTray, AddMenuList } from './utils';
+    AddDataBase, AddAppUpdate, AddAppSetting, AddTray, AddMenuList, appIcon } from './utils';
 
 let mainWindow, tray;
 const initAppWindow = () => {
@@ -43,6 +43,9 @@ app.on('ready', () => {
     }
     // 支持更新
     AddAppUpdate(mainWindow);
+    if (app.dock) {
+        app.dock.setIcon(appIcon);
+    }
 });
 
 app.on('window-all-closed', () => {
