@@ -20,6 +20,8 @@ const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const FirendlyErrorePlugin = require('friendly-errors-webpack-plugin');
 // 清理插件
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+// 打包提示
+const WebpackNotifierPlugin = require('webpack-notifier');
 
 // 是否是正式环境
 const isProd = process.env.ENV === 'prod';
@@ -81,7 +83,7 @@ const renderConfig = {
                         loader: 'sass-resources-loader',
                         options: {
                             resources: path.resolve(__dirname,
-                                '../src/styles/veriable.less'),
+                                '../src/styles/var.less'),
                         }
                     },
                 ]
@@ -104,7 +106,7 @@ const renderConfig = {
                     loader: 'url-loader',
                     query: {
                         limit: 10000,
-                        publicPath: '../',
+                        publicPath: './',
                         name: '[folder]/[name].[ext]'
                     }
                 }
@@ -114,6 +116,7 @@ const renderConfig = {
                 loader: 'url-loader',
                 options: {
                     limit: 10000,
+                    publicPath: './',
                     name: '[folder]/[name].[ext]'
                 }
             },
@@ -123,7 +126,7 @@ const renderConfig = {
                     loader: 'url-loader',
                     query: {
                         limit: 10000,
-                        publicPath: '../',
+                        publicPath: './',
                         name: '[folder]/[name].[ext]'
                     }
                 }
@@ -132,17 +135,16 @@ const renderConfig = {
     },
     resolve: { // 设置模块如何被解析
         alias: {
-            '@components': path.resolve(__dirname, '../src/components'),
-            '@styles': path.resolve(__dirname, '../src/styles'),
-            '@store': path.resolve(__dirname, '../src/store'),
-            '@router': path.resolve(__dirname, '../src/router'),
+            '@': path.resolve(__dirname, '../src'),
             '@assets': path.resolve(__dirname, '../src/assets'),
             '@common': path.resolve(__dirname, '../src/common'),
-            '@views': path.resolve(__dirname, '../src/views'),
-            '@mock': path.resolve(__dirname, '../src/mock'),
             '@constants': path.resolve(__dirname, '../src/constants'),
-            '@node': path.resolve(__dirname, '../src/node.js'),
-            '@electron': path.resolve(__dirname, '../src/electron.js'),
+            '@components': path.resolve(__dirname, '../src/components'),
+            '@mock': path.resolve(__dirname, '../src/mock'),
+            '@router': path.resolve(__dirname, '../src/router'),
+            '@styles': path.resolve(__dirname, '../src/styles'),
+            '@store': path.resolve(__dirname, '../src/store'),
+            '@views': path.resolve(__dirname, '../src/views'),
         },
         extensions: ['*', '.less', '.css', '.js', '.vue']
     },
@@ -210,6 +212,18 @@ const renderConfig = {
                 removeAttributeQuotes: true,
                 removeComments: true
             },
+            templateParameters(compilation, assets, options) {
+                return {
+                    compilation: compilation,
+                    webpack: compilation.getStats().toJson(),
+                    webpackConfig: compilation.options,
+                    htmlWebpackPlugin: {
+                        files: assets,
+                        options: options
+                    },
+                    process,
+                };
+            },
             dateTime: (new Date()).getTime(),
             nodeModules: process.env.ENV !== 'prod' ? path.resolve(__dirname, '../node_modules') : false,
 
@@ -225,6 +239,12 @@ const renderConfig = {
         // }),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoEmitOnErrorsPlugin(),
+        new WebpackNotifierPlugin({
+            title: '渲染进程',
+            emoji: true,
+            alwaysNotify: true,
+            contentImage: path.resolve(__dirname, '../icons/icon.png'),
+        }),
     ],
 };
 

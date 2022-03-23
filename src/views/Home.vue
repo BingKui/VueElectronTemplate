@@ -22,34 +22,64 @@
                 <div class="line-text">测试数据-12</div>
                 <div class="line-text">测试数据-13</div>
             </ScrollBar>
-            <div class="v-title">滚动条-x</div>
-            <ScrollBar class="v-container" axis="x">
-                <div class="line-text long-width">测试数据.....</div>
+            <div class="font-size-md text-primary margin-v margin-left-md font-weight-bold">提供基础组件</div>
+            <div class="v-container padding-all">
+                <Button>Default</Button>
+                <Button type="primary">Primary</Button>
+                <Button type="info">Info</Button>
+                <Button type="warn">Warn</Button>
+                <Button type="success">Success</Button>
+                <Button type="danger">Danger</Button>
+                <Button type="danger" ghost>Danger</Button>
+                <Button type="primary" :disabled="true">Disabled</Button>
+                <Progress :percent="30"></Progress>
+                <Progress :percent="100"></Progress>
+                <Button type="primary" @click="checkUpdateAction">检查更新</Button>
+            </div>
+            <div class="font-size-md text-primary margin-v margin-left-md font-weight-bold">滚动条-y</div>
+            <ScrollBar class="v-container scroll-container">
+                <div class="text-content font-size margin-left margin-bottom">测试数据-1</div>
+                <div class="text-content font-size margin-left margin-bottom">测试数据-2</div>
+                <div class="text-content font-size margin-left margin-bottom">测试数据-3</div>
+                <div class="text-content font-size margin-left margin-bottom">测试数据-4</div>
+                <div class="text-content font-size margin-left margin-bottom">测试数据-5</div>
+                <div class="text-content font-size margin-left margin-bottom">测试数据-6</div>
+                <div class="text-content font-size margin-left margin-bottom">测试数据-7</div>
+                <div class="text-content font-size margin-left margin-bottom">测试数据-8</div>
+                <div class="text-content font-size margin-left margin-bottom">测试数据-9</div>
+                <div class="text-content font-size margin-left margin-bottom">测试数据-10</div>
+                <div class="text-content font-size margin-left margin-bottom">测试数据-11</div>
+                <div class="text-content font-size margin-left margin-bottom">测试数据-12</div>
+                <div class="text-content font-size margin-left margin-bottom">测试数据-13</div>
             </ScrollBar>
-            <div class="v-title">右键菜单</div>
-            <MouseRight class="right-mouse-el" :mouseData="mouseData" :mouseKey="value">
-                <div class="mouse-right-value">右键点击</div>
-            </MouseRight>
-            <div class="v-title">加载文件内容</div>
-            <div class="v-container">{{fileText}}</div>
-            <div class="v-title">系统通知</div>
+            <div class="font-size-md text-primary margin-v margin-left-md font-weight-bold">滚动条-x</div>
+            <ScrollBar class="v-container scroll-container" axis="x">
+                <div class="text-content font-size long-width">测试数据.....</div>
+            </ScrollBar>
+            <div class="font-size-md text-primary margin-v margin-left-md font-weight-bold">右键菜单</div>
             <div class="v-container">
-                <button @click="openNotic">普通通知</button>
-                <button @click="openLinkNotic">添加链接的通知</button>
+                <MouseRight class="right-mouse-el" :mouseData="mouseData" :mouseKey="value">
+                    <div class="mouse-right-value flex-column-center font-size text-disable">右键点击区域</div>
+                </MouseRight>
             </div>
-            <div class="v-title">粘贴板操作</div>
-            <div class="v-container">
-                <div id="copy-text">点击下方复制按钮，即可复制这段文字。</div>
-                <button @click="copyText">复制</button>
+            <div class="font-size-md text-primary margin-v margin-left-md font-weight-bold">系统通知</div>
+            <div class="v-container padding-all">
+                <Button type="primary" @click="openNotic">普通通知</Button>
+                <Button type="success" @click="openLinkNotic">添加链接的通知</Button>
             </div>
-            <div class="v-title">粘贴板操作</div>
-            <div class="v-container">
-                <button @click="getDataList">获取本地数据</button>
-                <div class="data-list-item" v-for="item in dataList" :key="item._id">
+            <div class="font-size-md text-primary margin-v margin-left-md font-weight-bold">粘贴板操作</div>
+            <div class="v-container padding-all">
+                <div class="margin-bottom font-size" id="copy-text">点击下方复制按钮，即可复制这段文字。</div>
+                <Button type="primary" @click="copyAction">复制</Button>
+            </div>
+            <div class="font-size-md text-primary margin-v margin-left-md font-weight-bold">本地数据操作</div>
+            <div class="v-container padding-all">
+                <Button type="success" @click="getDataList">获取本地数据</Button>
+                <Button type="primary" @click="addDataItem">添加一条记录</Button>
+                <div class="data-list-item margin-all font-size" v-for="item in dataList" :key="item._id">
                     <span>{{item.name}}: {{item.value}}</span>
-                    <button @click="() => delDataItem(item._id)">删除</button>
+                    <Button type="danger" size="small" @click="() => delDataItem(item._id)">删除</Button>
                 </div>
-                <button @click="addDataItem">添加一条记录</button>
             </div>
         </ScrollBar>
     </div>
@@ -58,10 +88,13 @@
 <script>
 import ScrollBar from '@components/ScrollBar';
 import MouseRight from '@components/MouseRight';
-import { loadMarkdownFile } from '@common/utils';
-import { Notic, Copy } from '@common/common';
+import { Progress } from '@components/index';
+import { copyText } from '@common/common';
+import { sysNotice } from '@common/notice';
+
 import { addItem, getAllItems, delItem } from '@common/db';
 import { Button, Icon } from 'ant-design-vue';
+import { checkAppUpdate } from '@/common/update';
 export default {
     name: 'Home',
     components: {
@@ -69,37 +102,37 @@ export default {
         MouseRight,
         Button,
         Icon,
+        Progress,
     },
     data() {
         return {
             mouseData: [{
-                text: 'alert',
+                text: '复制',
                 action: (val) => {
-                    alert(JSON.stringify(val));
+                    alert('你点击了复制！');
                 },
             }, {
-                text: 'alert',
+                text: '粘贴',
                 action: (val) => {
-                    alert(JSON.stringify(val));
+                    alert('你点击了粘贴！');
                 },
             }],
             value: {
                 id: 1,
                 text: '1',
             },
-            fileText: loadMarkdownFile('test'),
             dataList: [],
         };
     },
     methods: {
         openNotic() {
-            Notic('普通通知', '这是一个普通的通知!这是一个普通的通知!这是一个普通的通知!这是一个普通的通知!这是一个普通的通知!这是一个普通的通知!这是一个普通的通知!');
+            sysNotice('普通通知', '这是一个普通的通知!这是一个普通的通知!这是一个普通的通知!这是一个普通的通知!这是一个普通的通知!这是一个普通的通知!这是一个普通的通知!');
         },
         openLinkNotic() {
-            Notic('链接通知', '这是一个带链接的通知', 'https://www.uiseed.cn');
+            sysNotice('链接通知', '这是一个带链接的通知', 'https://www.uiseed.cn');
         },
-        copyText() {
-            Copy(document.querySelector('#copy-text').innerHTML);
+        copyAction() {
+            copyText(document.querySelector('#copy-text').innerHTML);
         },
         async getDataList() {
             this.dataList = await getAllItems('test');
@@ -115,6 +148,9 @@ export default {
             await delItem('test', id);
             await this.getDataList();
         },
+        checkUpdateAction() {
+            checkAppUpdate();
+        },
     },
 };
 </script>
@@ -126,36 +162,30 @@ export default {
         height: 100vh;
         width: 100%;
     }
-    .v-title {
-        .font-size-lg();
-        color: @primary;
-        .m(@gap-md);
-    }
     .v-container {
-        .m(@gap-md);
-        height: 200px;
-        background-color: @gray;
-        .font-size-sm();
+        margin: 0 @gap-md;
+        background-color: @white;
+        border: @border;
         .line-text {
-            .font-size();
             text-indent: @gap;
-            .m-v(@gap-sm);
         }
         .long-width {
             width: 1000px;
-            background-color: @warn;
+            background-color: @info;
+            color: @white;
+            padding: @gap;
         }
     }
+    .scroll-container {
+        height: 100px;
+    }
     .right-mouse-el {
-        .m(@gap-md);
-        .p(@gap);
-        .flex-row-center();
-        background-color: @gray;
+        height: 100%;
         .mouse-right-value {
-            background-color: @danger;
-            color: @white;
-            width: 100px;
-            .t-c();
+            height: 100px;
+            user-select: none;
+            background-color: @gray-light;
+            width: 100%;
         }
     }
 }

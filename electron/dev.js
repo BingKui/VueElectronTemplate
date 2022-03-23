@@ -19,32 +19,11 @@ const mainConfig = require('../webpack/main');
 const rendererConfig = require('../webpack/render');
 
 const { port } = require('./config');
+const { greeting, logStats, electronLog, clearConsole } = require('./utils');
 
 let electronProcess = null;
 let manualRestart = false;
 let hotMiddleware;
-
-function logStats(proc, data) {
-    let log = '';
-
-    log += chalk.green.bold(`┏ ${proc} Process ${new Array((19 - proc.length) + 1).join('-')}`);
-    log += '\n\n';
-
-    if (typeof data === 'object') {
-        data.toString({
-            colors: true,
-            chunks: false
-        }).split(/\r?\n/).forEach(line => {
-            log += '  ' + line + '\n';
-        });
-    } else {
-        log += `  ${data}\n`;
-    }
-
-    log += '\n' + chalk.green.bold(`┗ ${new Array(28 + 1).join('-')}`) + '\n';
-
-    console.log(log);
-}
 
 function startRenderer() {
     return new Promise((resolve, reject) => {
@@ -149,33 +128,10 @@ function startElectron() {
     });
 }
 
-function electronLog(data, color) {
-    let log = '';
-    data = data.toString().split(/\r?\n/);
-    data.forEach(line => {
-        log += `  ${line}\n`;
-    });
-    if (/[0-9A-z]+/.test(log)) {
-        console.log(
-            chalk[color].bold('┏ Electron -------------------') +
-            '\n\n' +
-            log +
-            chalk[color].bold('┗ ----------------------------') +
-            '\n'
-        );
-    }
-}
-
-function greeting () {
-    say('VET Dev', {
-        colors: ['#0F0'],
-        font: 'simple',
-        space: true,
-    });
-}
-
 function init() {
-    greeting();
+    // 清空控制台
+    clearConsole();
+    greeting('vet dev!');
     Promise.all([startRenderer(), startMain()])
         .then(() => {
             startElectron();

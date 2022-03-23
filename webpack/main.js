@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const WebpackNotifierPlugin = require('webpack-notifier');
 
 const mainConfig = {
     target: 'electron-main',
@@ -40,8 +41,28 @@ const mainConfig = {
                     loader: 'url-loader',
                     query: {
                         limit: 10000,
-                        publicPath: '../',
-                        name: 'img/[name]-[folder].[ext]'
+                        publicPath: './',
+                        name: '[folder]/[name].[ext]'
+                    }
+                }
+            },
+            {
+                test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
+                loader: 'url-loader',
+                options: {
+                    limit: 10000,
+                    publicPath: './',
+                    name: '[folder]/[name].[ext]'
+                }
+            },
+            {
+                test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+                use: {
+                    loader: 'url-loader',
+                    query: {
+                        limit: 10000,
+                        publicPath: './',
+                        name: '[folder]/[name].[ext]'
                     }
                 }
             },
@@ -49,20 +70,24 @@ const mainConfig = {
     },
     plugins: [
         new webpack.NoEmitOnErrorsPlugin(),
+        new WebpackNotifierPlugin({
+            title: '主进程',
+            emoji: true,
+            contentImage: path.resolve(__dirname, '../icons/icon.png'),
+        }),
     ],
     resolve: {
         alias: {
-            '@components': path.resolve(__dirname, '../src/components'),
-            '@styles': path.resolve(__dirname, '../src/styles'),
-            '@store': path.resolve(__dirname, '../src/store'),
-            '@router': path.resolve(__dirname, '../src/router'),
+            '@': path.resolve(__dirname, '../src'),
             '@assets': path.resolve(__dirname, '../src/assets'),
             '@common': path.resolve(__dirname, '../src/common'),
-            '@views': path.resolve(__dirname, '../src/views'),
-            '@mock': path.resolve(__dirname, '../src/mock'),
             '@constants': path.resolve(__dirname, '../src/constants'),
-            '@node': path.resolve(__dirname, '../src/node.js'),
-            '@electron': path.resolve(__dirname, '../src/electron.js'),
+            '@components': path.resolve(__dirname, '../src/components'),
+            '@mock': path.resolve(__dirname, '../src/mock'),
+            '@router': path.resolve(__dirname, '../src/router'),
+            '@styles': path.resolve(__dirname, '../src/styles'),
+            '@store': path.resolve(__dirname, '../src/store'),
+            '@views': path.resolve(__dirname, '../src/views'),
         },
         extensions: ['.js', '.json', '.node'],
     },
