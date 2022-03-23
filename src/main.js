@@ -1,7 +1,7 @@
 import { app, Tray } from 'electron' // eslint-disable-line
 import { isDev, mainURL, createMainWindow, createTrayMenu, trayIcon,
     AddDataBase, AddAppUpdate, AddAppSetting, AddTray, AddMenuList, appIcon } from './utils';
-
+import DB_NAME from '@constants/db';
 let mainWindow, tray;
 const initAppWindow = () => {
     console.log('执行到这里');
