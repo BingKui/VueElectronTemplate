@@ -78,7 +78,12 @@ const renderConfig = {
                     isProd ? MiniCssExtractPlugin.loader : 'vue-style-loader',
                     'css-loader',
                     'postcss-loader',
-                    'less-loader',
+                    {
+                        loader: 'less-loader',
+                        options: {
+                            javascriptEnabled: true
+                        }
+                    },
                     {
                         loader: 'sass-resources-loader',
                         options: {
