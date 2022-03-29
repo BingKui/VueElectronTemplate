@@ -1,6 +1,6 @@
 <template>
     <div class="v-main-menu-container">
-
+        <Logo />
         <ScrollBar class="main-scroll">
             <Menu class="v-main-menu" theme="light" :active-name="activeName">
                 <MenuGroup v-for="(item, index) in MenuData" :title="item.groupName" :key="`group_${index}`">
@@ -17,6 +17,7 @@
 <script>
 import { Menu, MenuGroup, MenuItem, Icon, Input } from 'view-design';
 import ScrollBar from '@components/ScrollBar';
+import Logo from './Logo.vue';
 import { MenuList, MenuRouter } from '@router/menu';
 export default {
     name: 'MainMenu',
@@ -27,6 +28,7 @@ export default {
         Icon,
         Input,
         ScrollBar,
+        Logo,
     },
     computed: {
         activeName() {
