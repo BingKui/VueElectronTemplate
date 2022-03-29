@@ -77,18 +77,12 @@ export default {
         padding-top: 20px;
         height: calc(100vh - 20px);
         position: relative;
-        &::after {
-            content: '';
-            display: block;
-            width: 1px;
-            height: 100vh;
-            position: absolute;
-            background-color: #dedee2;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            z-index: 1;
-        }
+    }
+    .ivu-menu-vertical.ivu-menu-light:after {
+        display: none;
+    }
+    .ivu-menu-light.ivu-menu-vertical .ivu-menu-item-active:not(.ivu-menu-submenu):after {
+        display: none;
     }
     .v-main-menu {
         width: 100% !important;
