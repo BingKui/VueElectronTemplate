@@ -7,6 +7,7 @@
             "@common/*": ["src/common/*"],
             "@constants/*": ["src/constants/*"],
             "@components/*": ["src/components/*"],
+            "@feature/*": ["src/feature/*"],
             "@mock/*": ["src/mock/*"],
             "@router/*": ["src/router/*"],
             "@styles/*": ["src/styles/*"],

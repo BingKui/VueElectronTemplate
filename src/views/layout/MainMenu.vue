@@ -73,6 +73,7 @@ export default {
     height: 100vh;
     -webkit-app-region: drag;
     overflow: hidden;
+    border-right: @border-mini;
     .main-scroll {
         padding-top: 20px;
         height: calc(100vh - 20px);

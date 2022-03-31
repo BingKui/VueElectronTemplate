@@ -12,7 +12,43 @@ export const addItem = (name, object) => {
             if (result) {
                 reslove(result);
             } else {
-                reject();
+                reslove(false);
+            }
+        });
+    });
+};
+
+/**
+ * 更具id查询数据
+ * @param {String} name 数据库名称
+ * @param {String} id 数据id
+ */
+export const getItem = (name, id) => {
+    ipcRenderer.send(`${name}-find`, { _id: id });
+    return new Promise((reslove, reject) => {
+        ipcRenderer.once(`${name}-find-result`, (event, result) => {
+            if (result) {
+                reslove(result);
+            } else {
+                reslove(false);
+            }
+        });
+    });
+};
+
+/**
+ * 根据条件查询一条记录
+ * @param {String} name 数据库名称
+ * @param {Object} condition 查询条件
+ */
+export const getItemByCondition = (name, condition) => {
+    ipcRenderer.send(`${name}-find`, condition);
+    return new Promise((reslove, reject) => {
+        ipcRenderer.once(`${name}-find-result`, (event, result) => {
+            if (result) {
+                reslove(result);
+            } else {
+                reslove(false);
             }
         });
     });
@@ -29,7 +65,7 @@ export const getAllItems = (name) => {
             if (result) {
                 reslove(result);
             } else {
-                reject();
+                reslove(false);
             }
         });
     });
@@ -38,17 +74,16 @@ export const getAllItems = (name) => {
 /**
  * 按条件查询
  * @param {String} name 数据库名称
- * @param {Object} item 查询对像
  * @param {Object} condition 查询条件
  */
-export const getItemsByCondition = (name, item, condition) => {
-    ipcRenderer.send(`${name}-find`, item, condition);
+export const getItemsByCondition = (name, condition) => {
+    ipcRenderer.send(`${name}-find-by-condition`, condition);
     return new Promise((reslove, reject) => {
-        ipcRenderer.once(`${name}-find-result`, (event, result) => {
+        ipcRenderer.once(`${name}-find-by-condition-result`, (event, result) => {
             if (result) {
                 reslove(result);
             } else {
-                reject();
+                reslove(false);
             }
         });
     });
@@ -66,7 +101,7 @@ export const delItem = (name, id) => {
             if (result) {
                 reslove(result);
             } else {
-                reject();
+                reslove(false);
             }
         });
     });
@@ -86,6 +121,23 @@ export const updateItem = (name, condition, value) => {
                 reslove(result);
             } else {
                 reject();
+            }
+        });
+    });
+};
+
+/**
+ * 获取记录数
+ * @param {String} name 数据库名称
+ */
+export const getDbCount = (name) => {
+    ipcRenderer.send(`${name}-count`);
+    return new Promise((reslove, reject) => {
+        ipcRenderer.once(`${name}-count-result`, (event, count) => {
+            if (count) {
+                reslove(count);
+            } else {
+                reslove(0);
             }
         });
     });

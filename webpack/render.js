@@ -145,6 +145,7 @@ const renderConfig = {
             '@common': path.resolve(__dirname, '../src/common'),
             '@constants': path.resolve(__dirname, '../src/constants'),
             '@components': path.resolve(__dirname, '../src/components'),
+            '@feature': path.resolve(__dirname, '../src/feature'),
             '@mock': path.resolve(__dirname, '../src/mock'),
             '@router': path.resolve(__dirname, '../src/router'),
             '@styles': path.resolve(__dirname, '../src/styles'),
