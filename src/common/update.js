@@ -22,13 +22,6 @@ export const downloadUpdate = () => {
     ipcRenderer.send(ACTION_KEY.updateDownload);
 };
 
-// 监听下载进度
-export const onDownloadProgress = () => {
-    ipcRenderer.on(ACTION_KEY.updateProgress, (event, info) => {
-
-    });
-};
-
 // 立即安装
 export const installAppAction = () => {
     ipcRenderer.send(ACTION_KEY.updateNow);

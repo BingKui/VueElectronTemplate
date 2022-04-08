@@ -1,6 +1,6 @@
 <template>
   <Scrolly :passive-scroll="true">
-    <ScrollyViewport>
+    <ScrollyViewport :class="padding ? 'padding-h-md' : ''">
         <slot></slot>
     </ScrollyViewport>
     <ScrollyBar :axis="axis"/>
@@ -20,7 +20,11 @@ export default {
         axis: {
             type: String,
             default: 'y'
-        }
+        },
+        padding: {
+            type: Boolean,
+            default: false,
+        },
     }
 };
 </script>

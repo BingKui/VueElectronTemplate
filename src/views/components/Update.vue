@@ -16,7 +16,8 @@
 </template>
 
 <script>
-import { Button, Progress } from '@components/index';
+import { Button } from 'element-ui';
+import { Progress } from '@components/index';
 import { downloadUpdate, installAppAction, onUpdateMessage, removeListeners } from '@common/update';
 import { UPDATE_MESSAGE_TYPE } from '@constants/channel';
 export default {
@@ -64,6 +65,8 @@ export default {
             case UPDATE_MESSAGE_TYPE.actionComplate:
                 this.clearTimeAction();
                 break;
+            default:
+                this.timeClear();
             }
 
         },

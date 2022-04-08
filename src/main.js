@@ -1,10 +1,13 @@
-import { app, Tray } from 'electron' // eslint-disable-line
-import { isDev, mainURL, createMainWindow, createTrayMenu, trayIcon,
-    AddDataBase, AddAppUpdate, AddAppSetting, AddTray, AddMenuList, appIcon } from './utils';
+// 主入口文件
+import { app, Tray } from 'electron';
+import { isDev, mainURL, createMainWindow, createTrayMenu, trayIcon, appIcon } from '@/utils';
+import { AddAppSetting, AddAppUpdate, AddDataBase, AddMenuList } from '@/support';
 import DB_NAME from '@constants/db';
+
 let mainWindow, tray;
+
+// 初始化窗口
 const initAppWindow = () => {
-    console.log('执行到这里');
     mainWindow = createMainWindow();
     mainWindow.loadURL(mainURL);
     mainWindow.on('closed', () => {
@@ -24,7 +27,7 @@ app.on('ready', () => {
         AddDataBase(DB_NAME[key]);
     }
     // 添加设置支持
-    AddAppSetting(app, mainWindow);
+    AddAppSetting();
     // 添加自定义菜单
     AddMenuList();
     // 添加系统托盘图标
@@ -44,8 +47,9 @@ app.on('ready', () => {
         });
     }
     // 支持更新
-    AddAppUpdate(mainWindow);
-    if (app.dock) {
+    AddAppUpdate();
+    // 开发环境修改dock图标
+    if (isDev && app.dock) {
         app.dock.setIcon(appIcon);
     }
 });

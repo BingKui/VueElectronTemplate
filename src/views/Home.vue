@@ -1,21 +1,25 @@
 <template>
-    <div class="v-home">
+    <div class="v-home-page">
         <Divider content-position="left">项目简介</Divider>
-        <div class="font-size-sm text-content">此项目为vet项目的 element-ui 模板，已实现 element-ui 的配置，可直接使用。</div>
+        <div class="desc">此项目为vet项目的iview模板，已实现iview的配置，可直接使用。</div>
         <Divider content-position="left">项目依赖项</Divider>
-        <div class="dependencies text-content font-size-sm">
-            <div class="dependencies-item">element-ui: v2.15.7</div>
+        <div class="dependencies">
+            <div class="dependencies-item">element-ui: v2.15.6</div>
+            <div class="dependencies-item">@icon-park/vue: v1.3.5</div>
+            <div class="dependencies-item">axios: v0.26.1</div>
+            <div class="dependencies-item">jszip: v3.9.0</div>
             <div class="dependencies-item">nedb: v1.8.0</div>
-            <div class="dependencies-item">v-contextmenu: v2.8.0</div>
-            <div class="dependencies-item">vue: v2.6.10</div>
-            <div class="dependencies-item">vue-router: v3.0.6</div>
+            <div class="dependencies-item">shelljs: v0.8.5</div>
+            <div class="dependencies-item">v-contextmenu: v2.8.1</div>
+            <div class="dependencies-item">vue: v2.6.14</div>
+            <div class="dependencies-item">vue-router: v3.5.2</div>
             <div class="dependencies-item">vue-scrolly: v0.9.3</div>
-            <div class="dependencies-item">vuex: v3.1.1</div>
+            <div class="dependencies-item">vuex: v3.6.2</div>
         </div>
         <Divider content-position="left">开源声明</Divider>
         <div class="license font-size-sm text-content">
             <div class="license-name">MIT License</div>
-            <div class="license-author">Copyright (c) 2019-2021 康兵奎</div>
+            <div class="license-author">Copyright (c) 2019-2022 康兵奎</div>
             <div class="license-part">Permission is hereby granted, free of charge, to any person obtaining a copy<br />
             of this software and associated documentation files (the "Software"), to deal<br />
             in the Software without restriction, including without limitation the rights<br />
@@ -46,7 +50,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.v-home {
+.v-home-page {
     padding: 0 @gap;
     .desc {
         text-indent: 20px;

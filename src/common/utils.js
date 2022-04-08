@@ -1,9 +1,17 @@
-const { readMarkdownFile } = require('@/node');
+import { ipcRenderer } from 'electron';
+import { ACTION_RESULT } from '@constants/channel';
 
 /**
- * 加载markdown内容
- * @param {String} filename 文件名
+ * 渲染进程通信事件封装
+ * @param {String} channel 具体的通道
+ * @param {Any} params 参数
+ * @returns
  */
-export const loadMarkdownFile = (filename) => {
-    return readMarkdownFile(filename);
+export const renderEvent = (channel, ...params) => {
+    ipcRenderer.send(channel, ...params);
+    return new Promise((resolve, reject) => {
+        ipcRenderer.once(`${channel}${ACTION_RESULT}`, (event, info) => {
+            resolve(info);
+        });
+    });
 };

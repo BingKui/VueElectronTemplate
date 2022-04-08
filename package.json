@@ -1,7 +1,7 @@
 {
-  "name": "vet-iview",
+  "name": "vet-element",
   "version": "1.0.0",
-  "description": "vet项目的 element-ui 模板。",
+  "description": "vet项目的 Element 模板。",
   "main": "./dist/electron/main.js",
   "scripts": {
     "dev": "node ./electron/dev.js",
@@ -84,9 +84,13 @@
     }
   },
   "dependencies": {
-    "axios": "^0.24.0",
-    "element-ui": "^2.15.7",
+    "@icon-park/vue": "^1.3.5",
+    "axios": "^0.26.1",
+    "element-ui": "^2.15.6",
+    "fs-extra": "^10.0.1",
+    "jszip": "^3.9.0",
     "nedb": "^1.8.0",
+    "shelljs": "^0.8.5",
     "v-contextmenu": "^2.8.1",
     "vue": "^2.6.14",
     "vue-router": "^3.5.2",

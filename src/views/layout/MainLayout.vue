@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import { Aside, Container, Main } from 'element-ui';
+import { Container, Main, Aside } from 'element-ui';
 import ScrollBar from '@components/ScrollBar';
 import MainMenu from './MainMenu';
 export default {
@@ -24,7 +24,7 @@ export default {
     components: {
         MainMenu,
         ScrollBar,
-        Aside, Container, Main,
+        Container, Main, Aside,
     },
 };
 </script>
@@ -33,13 +33,6 @@ export default {
 @header-height: 40px;
 @content-height: 100vh;
 .v-main-layout {
-    .v-main-header {
-        height: @header-height;
-        .border-line(@border-color, 0, 0);
-    }
-    .v-main-content {
-        height: @content-height;
-    }
     .left-silder {
         height: @content-height;
         position: fixed;
