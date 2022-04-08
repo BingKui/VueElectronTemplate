@@ -9,6 +9,7 @@ import MouseRightDemo from '@views/Demo/MouseRightDemo';
 import LocalDBDemo from '@views/Demo/LocalDBDemo';
 import NoticeDemo from '@views/Demo/NoticeDemo';
 import ClipboardDemo from '@views/Demo/ClipboardDemo';
+import IconParkDemo from '@views/Demo/IconParkDemo';
 
 export const MenuList = [{
     icon: 'ios-home-outline', // 图标
@@ -19,26 +20,6 @@ export const MenuList = [{
     name: '功能演示', // 菜单名称
     router: 'demo', // 菜单路由
 }, {
-//     icon: 'ios-albums-outline', // 图标
-//     name: '滚动组件', // 菜单名称
-//     router: 'demo-scroll', // 菜单路由
-// }, {
-//     icon: 'ios-menu', // 图标
-//     name: '右键菜单', // 菜单名称
-//     router: 'demo-mouse-right', // 菜单路由
-// }, {
-//     icon: 'ios-cube-outline', // 图标
-//     name: '本地数据库', // 菜单名称
-//     router: 'demo-local-db', // 菜单路由
-// }, {
-//     icon: 'ios-notifications-outline', // 图标
-//     name: '通知&提示', // 菜单名称
-//     router: 'demo-notice', // 菜单路由
-// }, {
-//     icon: 'ios-copy-outline', // 图标
-//     name: '粘贴板', // 菜单名称
-//     router: 'demo-clipboard', // 菜单路由
-// }, {
     icon: 'ios-settings-outline', // 图标
     name: '设置', // 菜单名称
     router: 'setting', // 菜单路由
@@ -87,4 +68,9 @@ export const MenuRouter = [{
     router: 'demo-notice',
     path: '/demo-notice',
     component: NoticeDemo,
+}, {
+    name: 'demo-iconpark',
+    router: 'demo-iconpark',
+    path: '/demo-iconpark',
+    component: IconParkDemo,
 }];

@@ -39,6 +39,10 @@ export default {
                 icon: 'ios-copy-outline', // 图标
                 name: '粘贴板', // 菜单名称
                 router: 'demo-clipboard', // 菜单路由
+            }, {
+                icon: 'ios-list', // 图标
+                name: 'IconPark图标', // 菜单名称
+                router: 'demo-iconpark', // 菜单路由
             }],
         };
     },

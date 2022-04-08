@@ -4,13 +4,17 @@
         <div class="desc">此项目为vet项目的iview模板，已实现iview的配置，可直接使用。</div>
         <Divider orientation="left">项目依赖项</Divider>
         <div class="dependencies">
-            <div class="dependencies-item">view-design(iview): v4.0.2</div>
+            <div class="dependencies-item">view-design(iview): v4.7.0</div>
+            <div class="dependencies-item">@icon-park/vue: v1.3.5</div>
+            <div class="dependencies-item">axios: v0.26.1</div>
+            <div class="dependencies-item">jszip: v3.9.0</div>
             <div class="dependencies-item">nedb: v1.8.0</div>
-            <div class="dependencies-item">v-contextmenu: v2.8.0</div>
-            <div class="dependencies-item">vue: v2.6.10</div>
-            <div class="dependencies-item">vue-router: v3.1.3</div>
+            <div class="dependencies-item">shelljs: v0.8.5</div>
+            <div class="dependencies-item">v-contextmenu: v2.8.1</div>
+            <div class="dependencies-item">vue: v2.6.14</div>
+            <div class="dependencies-item">vue-router: v3.5.2</div>
             <div class="dependencies-item">vue-scrolly: v0.9.3</div>
-            <div class="dependencies-item">vuex: v3.1.1</div>
+            <div class="dependencies-item">vuex: v3.6.2</div>
         </div>
         <Divider orientation="left">开源声明</Divider>
         <div class="license font-size-sm text-content">

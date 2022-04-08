@@ -1,6 +1,6 @@
 <template>
     <Page class="v-clipboard-demo" header="粘贴板">
-         <Divider orientation="left">复制</Divider>
+        <Divider orientation="left">复制</Divider>
         <div class="text-content font-size" id="copy-text">点击下方复制按钮，即可复制这段文字。</div>
         <Button @click="copyText">复制</Button>
         <Divider orientation="left">粘贴</Divider>

@@ -9,11 +9,9 @@ import { ACTION_RESULT } from '@constants/channel';
  */
 export const renderEvent = (channel, ...params) => {
     ipcRenderer.send(channel, ...params);
-    console.log('render ->', channel);
     return new Promise((resolve, reject) => {
         ipcRenderer.once(`${channel}${ACTION_RESULT}`, (event, info) => {
             resolve(info);
-            console.log('render result->', channel, info);
         });
     });
 };

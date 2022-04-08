@@ -71,7 +71,6 @@ export default {
             checkAppUpdate();
         },
         async handleAction(flag, settingKey) {
-            console.log('change');
             const info = {
                 [settingKey]: flag,
             };
