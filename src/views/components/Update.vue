@@ -65,6 +65,8 @@ export default {
             case UPDATE_MESSAGE_TYPE.actionComplate:
                 this.clearTimeAction();
                 break;
+            default:
+                this.timeClear();
             }
 
         },
