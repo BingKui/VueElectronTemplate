@@ -1,7 +1,78 @@
+import { Notification } from 'ant-design-vue';
 import { shell } from 'electron';
 
+const baseConfig = {
+    // top: 20,
+    duration: 3,
+};
+
 /**
- * 系统通知
+ * 通知信息
+ * @param {String} desc 提示信息
+ * @param {String} title 提示标题
+ */
+export const notice = (desc, title='提示') => {
+    Notification.open({
+        message: title,
+        description: desc,
+        ...baseConfig,
+    });
+};
+
+/**
+ * 通知一般信息
+ * @param {String} desc 提示信息
+ * @param {String} title 提示标题
+ */
+export const infoNotice = (desc, title='提示') => {
+    Notification.info({
+        message: title,
+        description: desc,
+        ...baseConfig,
+    });
+};
+
+/**
+ * 通知成功信息
+ * @param {String} desc 提示信息
+ * @param {String} title 提示标题
+ */
+export const successNotice = (desc, title='成功') => {
+    Notification.success({
+        message: title,
+        description: desc,
+        ...baseConfig,
+    });
+};
+
+/**
+ * 通知错误信息
+ * @param {String} desc 提示信息
+ * @param {String} title 提示标题
+ */
+export const errorNotice = (desc, title='错误') => {
+    Notification.error({
+        message: title,
+        description: desc,
+        ...baseConfig,
+    });
+};
+
+/**
+ * 通知警告信息
+ * @param {String} desc 提示信息
+ * @param {String} title 提示标题
+ */
+export const warnNotice = (desc, title='警告') => {
+    Notification.warning({
+        message: title,
+        description: desc,
+        ...baseConfig,
+    });
+};
+
+/**
+ * 渲染进程调用系统通知
  * @param {String} title 通知标题
  * @param {String} body 通知内容
  * @param {String} href 点击跳转的链接地址

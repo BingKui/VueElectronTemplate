@@ -14,7 +14,7 @@ export const PLATFORM_VALUE = {
 };
 
 // 更新地址
-export const UPDATE_URL = 'https://api.github.com/repos/BingKui/ElectronBuilderTest/tarball/v1.0.13/';
+export const UPDATE_URL = '';
 
 // 更新消息
 export const UPDATE_MESSAGE = {

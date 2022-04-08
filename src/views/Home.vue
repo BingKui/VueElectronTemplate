@@ -1,191 +1,73 @@
 <template>
-    <div class="v-home">
-         <ScrollBar class="main-container" axis="y">
-            <div class="v-title">组件示例</div>
-            <div>
-                <Button type="primary">按钮</Button>
-                <Icon type="loading" />
-            </div>
-            <div class="v-title">滚动条-y</div>
-            <ScrollBar class="v-container">
-                <div class="line-text">测试数据-1</div>
-                <div class="line-text">测试数据-2</div>
-                <div class="line-text">测试数据-3</div>
-                <div class="line-text">测试数据-4</div>
-                <div class="line-text">测试数据-5</div>
-                <div class="line-text">测试数据-6</div>
-                <div class="line-text">测试数据-7</div>
-                <div class="line-text">测试数据-8</div>
-                <div class="line-text">测试数据-9</div>
-                <div class="line-text">测试数据-10</div>
-                <div class="line-text">测试数据-11</div>
-                <div class="line-text">测试数据-12</div>
-                <div class="line-text">测试数据-13</div>
-            </ScrollBar>
-            <div class="font-size-md text-primary margin-v margin-left-md font-weight-bold">提供基础组件</div>
-            <div class="v-container padding-all">
-                <Button>Default</Button>
-                <Button type="primary">Primary</Button>
-                <Button type="info">Info</Button>
-                <Button type="warn">Warn</Button>
-                <Button type="success">Success</Button>
-                <Button type="danger">Danger</Button>
-                <Button type="danger" ghost>Danger</Button>
-                <Button type="primary" :disabled="true">Disabled</Button>
-                <Progress :percent="30"></Progress>
-                <Progress :percent="100"></Progress>
-                <Button type="primary" @click="checkUpdateAction">检查更新</Button>
-            </div>
-            <div class="font-size-md text-primary margin-v margin-left-md font-weight-bold">滚动条-y</div>
-            <ScrollBar class="v-container scroll-container">
-                <div class="text-content font-size margin-left margin-bottom">测试数据-1</div>
-                <div class="text-content font-size margin-left margin-bottom">测试数据-2</div>
-                <div class="text-content font-size margin-left margin-bottom">测试数据-3</div>
-                <div class="text-content font-size margin-left margin-bottom">测试数据-4</div>
-                <div class="text-content font-size margin-left margin-bottom">测试数据-5</div>
-                <div class="text-content font-size margin-left margin-bottom">测试数据-6</div>
-                <div class="text-content font-size margin-left margin-bottom">测试数据-7</div>
-                <div class="text-content font-size margin-left margin-bottom">测试数据-8</div>
-                <div class="text-content font-size margin-left margin-bottom">测试数据-9</div>
-                <div class="text-content font-size margin-left margin-bottom">测试数据-10</div>
-                <div class="text-content font-size margin-left margin-bottom">测试数据-11</div>
-                <div class="text-content font-size margin-left margin-bottom">测试数据-12</div>
-                <div class="text-content font-size margin-left margin-bottom">测试数据-13</div>
-            </ScrollBar>
-            <div class="font-size-md text-primary margin-v margin-left-md font-weight-bold">滚动条-x</div>
-            <ScrollBar class="v-container scroll-container" axis="x">
-                <div class="text-content font-size long-width">测试数据.....</div>
-            </ScrollBar>
-            <div class="font-size-md text-primary margin-v margin-left-md font-weight-bold">右键菜单</div>
-            <div class="v-container">
-                <MouseRight class="right-mouse-el" :mouseData="mouseData" :mouseKey="value">
-                    <div class="mouse-right-value flex-column-center font-size text-disable">右键点击区域</div>
-                </MouseRight>
-            </div>
-            <div class="font-size-md text-primary margin-v margin-left-md font-weight-bold">系统通知</div>
-            <div class="v-container padding-all">
-                <Button type="primary" @click="openNotic">普通通知</Button>
-                <Button type="success" @click="openLinkNotic">添加链接的通知</Button>
-            </div>
-            <div class="font-size-md text-primary margin-v margin-left-md font-weight-bold">粘贴板操作</div>
-            <div class="v-container padding-all">
-                <div class="margin-bottom font-size" id="copy-text">点击下方复制按钮，即可复制这段文字。</div>
-                <Button type="primary" @click="copyAction">复制</Button>
-            </div>
-            <div class="font-size-md text-primary margin-v margin-left-md font-weight-bold">本地数据操作</div>
-            <div class="v-container padding-all">
-                <Button type="success" @click="getDataList">获取本地数据</Button>
-                <Button type="primary" @click="addDataItem">添加一条记录</Button>
-                <div class="data-list-item margin-all font-size" v-for="item in dataList" :key="item._id">
-                    <span>{{item.name}}: {{item.value}}</span>
-                    <Button type="danger" size="small" @click="() => delDataItem(item._id)">删除</Button>
-                </div>
-            </div>
-        </ScrollBar>
+    <div class="v-home-page">
+        <Divider orientation="left">项目简介</Divider>
+        <div class="desc">此项目为vet项目的 antd 模板，已实现 antd 的配置，可直接使用。</div>
+        <Divider orientation="left">项目依赖项</Divider>
+        <div class="dependencies">
+            <div class="dependencies-item">ant-design-vue: v1.6.2</div>
+            <div class="dependencies-item">@icon-park/vue: v1.3.5</div>
+            <div class="dependencies-item">axios: v0.26.1</div>
+            <div class="dependencies-item">jszip: v3.9.0</div>
+            <div class="dependencies-item">nedb: v1.8.0</div>
+            <div class="dependencies-item">shelljs: v0.8.5</div>
+            <div class="dependencies-item">v-contextmenu: v2.8.1</div>
+            <div class="dependencies-item">vue: v2.6.14</div>
+            <div class="dependencies-item">vue-router: v3.5.2</div>
+            <div class="dependencies-item">vue-scrolly: v0.9.3</div>
+            <div class="dependencies-item">vuex: v3.6.2</div>
+        </div>
+        <Divider orientation="left">开源声明</Divider>
+        <div class="license font-size-sm text-content">
+            <div class="license-name">MIT License</div>
+            <div class="license-author">Copyright (c) 2019-2022 康兵奎</div>
+            <div class="license-part">Permission is hereby granted, free of charge, to any person obtaining a copy<br />
+            of this software and associated documentation files (the "Software"), to deal<br />
+            in the Software without restriction, including without limitation the rights<br />
+            to use, copy, modify, merge, publish, distribute, sublicense, and/or sell<br />
+            copies of the Software, and to permit persons to whom the Software is<br />
+            furnished to do so, subject to the following conditions:</div>
+            <div class="license-part">The above copyright notice and this permission notice shall be included in all<br />
+            copies or substantial portions of the Software.</div>
+            <div class="license-part">THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR<br />
+            IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,<br />
+            FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE<br />
+            AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER<br />
+            LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,<br />
+            OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE<br />
+            SOFTWARE.</div>
+        </div>
     </div>
 </template>
 
 <script>
-import ScrollBar from '@components/ScrollBar';
-import MouseRight from '@components/MouseRight';
-import { Progress } from '@components/index';
-import { copyText } from '@common/common';
-import { sysNotice } from '@common/notice';
-
-import { addItem, getAllItems, delItem } from '@common/db';
-import { Button, Icon } from 'ant-design-vue';
-import { checkAppUpdate } from '@/common/update';
+import { Divider } from 'ant-design-vue';
 export default {
     name: 'Home',
     components: {
-        ScrollBar,
-        MouseRight,
-        Button,
-        Icon,
-        Progress,
-    },
-    data() {
-        return {
-            mouseData: [{
-                text: '复制',
-                action: (val) => {
-                    alert('你点击了复制！');
-                },
-            }, {
-                text: '粘贴',
-                action: (val) => {
-                    alert('你点击了粘贴！');
-                },
-            }],
-            value: {
-                id: 1,
-                text: '1',
-            },
-            dataList: [],
-        };
-    },
-    methods: {
-        openNotic() {
-            sysNotice('普通通知', '这是一个普通的通知!这是一个普通的通知!这是一个普通的通知!这是一个普通的通知!这是一个普通的通知!这是一个普通的通知!这是一个普通的通知!');
-        },
-        openLinkNotic() {
-            sysNotice('链接通知', '这是一个带链接的通知', 'https://www.uiseed.cn');
-        },
-        copyAction() {
-            copyText(document.querySelector('#copy-text').innerHTML);
-        },
-        async getDataList() {
-            this.dataList = await getAllItems('test');
-        },
-        async addDataItem() {
-            await addItem('test', {
-                name: '111',
-                value: 100,
-            });
-            await this.getDataList();
-        },
-        async delDataItem(id) {
-            await delItem('test', id);
-            await this.getDataList();
-        },
-        checkUpdateAction() {
-            checkAppUpdate();
-        },
+        Divider,
     },
 };
 </script>
 
 <style lang="less" scoped>
-.v-home {
-    font-size: 20px;
-    .main-container {
-        height: 100vh;
-        width: 100%;
+.v-home-page {
+    padding: 0 @gap;
+    .desc {
+        text-indent: 20px;
     }
-    .v-container {
-        margin: 0 @gap-md;
-        background-color: @white;
-        border: @border;
-        .line-text {
-            text-indent: @gap;
-        }
-        .long-width {
-            width: 1000px;
-            background-color: @info;
-            color: @white;
-            padding: @gap;
+    .dependencies {
+        padding-left: 20px;
+        .dependencies-item {
+            font-size: @font-size;
+            margin: 3px 0;
         }
     }
-    .scroll-container {
-        height: 100px;
-    }
-    .right-mouse-el {
-        height: 100%;
-        .mouse-right-value {
-            height: 100px;
-            user-select: none;
-            background-color: @gray-light;
-            width: 100%;
+    .license {
+        padding-left: 20px;
+        .license-name,
+        .license-author,
+        .license-part {
+            margin-bottom: @gap;
         }
     }
 }

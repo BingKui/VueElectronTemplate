@@ -71,3 +71,5 @@ thumbs.db
 !.gitkeep
 dist/
 .vscode/
+temp/*
+test.js
