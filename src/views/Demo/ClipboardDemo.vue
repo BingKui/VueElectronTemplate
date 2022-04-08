@@ -1,23 +1,25 @@
 <template>
-    <div class="v-clipboard-demo">
-        <Divider orientation="left">复制</Divider>
+    <Page class="v-clipboard-demo" header="粘贴板">
+         <Divider orientation="left">复制</Divider>
         <div class="text-content font-size" id="copy-text">点击下方复制按钮，即可复制这段文字。</div>
         <Button @click="copyText">复制</Button>
         <Divider orientation="left">粘贴</Divider>
-        <Input placeholder="复制的内容粘贴到此处" disabled v-model="pasteValue" />
+        <Input class="margin-bottom" placeholder="复制的内容粘贴到此处" disabled v-model="pasteValue" />
         <Button @click="pasteText">粘贴</Button>
-    </div>
+    </Page>
 </template>
 
 <script>
 import { Button, Divider, Input } from 'view-design';
 import { copyText, pasteText } from '@common/common';
+import { Page } from '@components';
 export default {
     name: 'ClipboardDemo', // 粘贴板操作
     components: {
         Button,
         Divider,
         Input,
+        Page,
     },
     data() {
         return {
@@ -37,7 +39,6 @@ export default {
 
 <style lang="less" scoped>
 .v-clipboard-demo {
-    padding: 0 @gap;
     .el-button {
         margin-top: @gap;
     }

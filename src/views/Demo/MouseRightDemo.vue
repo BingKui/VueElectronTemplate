@@ -1,21 +1,22 @@
 <template>
-    <div class="v-mouse-right-demo">
+    <Page class="v-mouse-right-demo" header="右键菜单">
         <Divider orientation="left">右键菜单</Divider>
         <MouseRight class="right-mouse-el flex-row-center" :mouseData="mouseData" :mouseKey="value">
             <Card>右键点击</Card>
         </MouseRight>
-    </div>
+    </Page>
 </template>
 
 <script>
 import { Divider, Card } from 'view-design';
-import MouseRight from '@components/MouseRight';
+import { MouseRight, Page } from '@components';
 import { successTip, errorTip, warnTip, infoTip } from '@common/tip';
 import logger from '@common/logger';
 export default {
     name: 'MouseRightDemo', // 右键菜单
     components: {
         Divider,
+        Page,
         MouseRight,
         Card,
     },
@@ -57,7 +58,6 @@ export default {
 
 <style lang="less" scoped>
 .v-mouse-right-demo {
-    padding: 0 @gap;
     .right-mouse-el {
         height: 200px;
         margin: @gap-md;

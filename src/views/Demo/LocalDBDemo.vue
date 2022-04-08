@@ -1,23 +1,24 @@
 <template>
-    <div class="v-local-db-demo">
+    <Page class="v-local-db-demo" header="本地数据库">
         <Divider orientation="left">本地数据库</Divider>
-        <div class="db-list">
+        <div class="db-list margin-bottom">
             <Card class="db-item" v-for="(item, index) in dataList" :key="index">{{item.value}}
-                <Button type="danger" size="mini" @click="() => deleteAction(item)">删除</Button>
+                <Button type="error" size="small" @click="() => deleteAction(item)">删除</Button>
             </Card>
             <Button @click="getDataList">刷新</Button>
         </div>
-        <div class="add-container">
+        <Space class="add-container">
             <Input placeholder="输入要添加的数据" v-model="itemValue" />
             <Button type="primary" @click="addDataItem">添加数据</Button>
-        </div>
-    </div>
+        </Space>
+    </Page>
 </template>
 
 <script>
 import { Divider, Card, Button, Input} from 'view-design';
-import { addItem, getAllItems, delItem } from '@common/db';
+import { addItem, getList, delItem } from '@common/db';
 import { successTip, errorTip } from '@common/tip';
+import { Space, Page } from '@components';
 import DB_NAME from '@constants/db';
 export default {
     name: 'LocalDBDemo', // 本地数据库
@@ -26,6 +27,8 @@ export default {
         Card,
         Button,
         Input,
+        Space,
+        Page,
     },
     data() {
         return {
@@ -55,7 +58,7 @@ export default {
             await this.getDataList();
         },
         async getDataList() {
-            this.dataList = await getAllItems(DB_NAME.dbTest);
+            this.dataList = await getList(DB_NAME.dbTest);
             successTip('数据刷新成功！');
         },
     },
@@ -64,7 +67,6 @@ export default {
 
 <style lang="less">
 .v-local-db-demo {
-    padding: 0 @gap;
     .el-button {
         margin: @gap 0 ;
     }

@@ -1,5 +1,5 @@
 <template>
-    <div class="v-notice-demo">
+    <Page class="v-notice-demo" header="通知&提示">
         <Divider orientation="left">系统通知</Divider>
         <Button @click="openSys">系统通知</Button>
         <Button type="primary" @click="openSysLink">系统通知-连接</Button>
@@ -14,18 +14,20 @@
         <Button type="success" @click="openSuccessTip">success</Button>
         <Button type="error" @click="openErrorTip">error</Button>
         <Button type="warning" @click="openWarnTip">warn</Button>
-    </div>
+    </Page>
 </template>
 
 <script>
 import { Button, Divider } from 'view-design';
 import { notice, infoNotice, successNotice, errorNotice, warnNotice, sysNotice } from '@common/notice';
 import { successTip, errorTip, warnTip, infoTip } from '@common/tip';
+import { Page } from '@components';
 export default {
     name: 'NoticDemo', // 通知
     components: {
         Button,
         Divider,
+        Page,
     },
     methods: {
         openSys() {
@@ -66,7 +68,5 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.v-notice-demo {
-    padding: 0 @gap;
-}
+.v-notice-demo {}
 </style>

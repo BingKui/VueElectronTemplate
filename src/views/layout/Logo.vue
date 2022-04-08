@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import logoSrc from '@assets/app.png';
+import logoSrc from '@assets/logo.png';
 export default {
     name: 'Logo', // Logo
     data() {

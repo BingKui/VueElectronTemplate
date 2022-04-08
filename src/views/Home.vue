@@ -1,5 +1,5 @@
 <template>
-    <div class="v-home">
+    <div class="v-home-page">
         <Divider orientation="left">项目简介</Divider>
         <div class="desc">此项目为vet项目的iview模板，已实现iview的配置，可直接使用。</div>
         <Divider orientation="left">项目依赖项</Divider>
@@ -15,7 +15,7 @@
         <Divider orientation="left">开源声明</Divider>
         <div class="license font-size-sm text-content">
             <div class="license-name">MIT License</div>
-            <div class="license-author">Copyright (c) 2019-2021 康兵奎</div>
+            <div class="license-author">Copyright (c) 2019-2022 康兵奎</div>
             <div class="license-part">Permission is hereby granted, free of charge, to any person obtaining a copy<br />
             of this software and associated documentation files (the "Software"), to deal<br />
             in the Software without restriction, including without limitation the rights<br />
@@ -46,7 +46,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.v-home {
+.v-home-page {
     padding: 0 @gap;
     .desc {
         text-indent: 20px;

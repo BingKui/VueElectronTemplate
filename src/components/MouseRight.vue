@@ -39,6 +39,7 @@ export default {
     padding: 0;
     border: none;
     overflow: hidden;
+    border-radius: 0;
     .v-contextmenu-divider {
         margin: 0;
     }

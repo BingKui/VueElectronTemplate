@@ -85,7 +85,10 @@
   },
   "dependencies": {
     "axios": "^0.24.0",
+    "fs-extra": "^10.0.1",
+    "jszip": "^3.9.0",
     "nedb": "^1.8.0",
+    "shelljs": "^0.8.5",
     "v-contextmenu": "^2.8.1",
     "view-design": "^4.0.2",
     "vue": "^2.6.14",

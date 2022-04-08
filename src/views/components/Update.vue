@@ -16,7 +16,8 @@
 </template>
 
 <script>
-import { Button, Progress } from '@components/index';
+import { Button } from 'view-design';
+import { Progress } from '@components/index';
 import { downloadUpdate, installAppAction, onUpdateMessage, removeListeners } from '@common/update';
 import { UPDATE_MESSAGE_TYPE } from '@constants/channel';
 export default {
