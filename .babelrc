@@ -26,7 +26,7 @@
         ["import", {
             "libraryName": "ant-design-vue",
             "libraryDirectory": "es",
-            "style": "css"
+            "style": true
         }],
         "@babel/plugin-syntax-dynamic-import",
         "@babel/plugin-syntax-import-meta",
