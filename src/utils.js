@@ -16,7 +16,7 @@ export const isLinux = process.platform === PLATFORM_VALUE.linux;
 // 应用图标
 export const appIcon = path.resolve(__dirname, './assets/app.png');
 // 系统托盘图标
-export const trayIcon = path.resolve(__dirname, './assets/tray.png');
+export const trayIcon = path.resolve(__dirname, isMac ? './assets/trayTemplate.png' : './assets/tray.png');
 // 主界面地址
 export const mainURL = isDev ? `http://${host}:${port}` : `file://${__dirname}/index.html`;
 
