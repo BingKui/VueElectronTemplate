@@ -1,5 +1,6 @@
 // 功能支持
-import { app, ipcMain, Menu, autoUpdater, globalShortcut } from 'electron';
+import { app, ipcMain, Menu, globalShortcut } from 'electron';
+import { autoUpdater } from 'electron-updater';
 import { BASE_SETTING, UPDATE_URL, UPDATE_MESSAGE } from '@constants/common';
 import { ACTION_KEY, UPDATE_MESSAGE_TYPE } from '@constants/channel';
 import { mainEvent } from './utils';
@@ -8,6 +9,11 @@ import Datastore from 'nedb';
 const Store = require('electron-store');
 const systemSetting = new Store();
 import { isMac } from './utils';
+
+// 设置更新地址
+autoUpdater.setFeedURL({ url: UPDATE_URL, provider: 'generic' });
+autoUpdater.autoDownload = false;
+autoUpdater.autoInstallOnAppQuit = true;
 
 /**
  * 处理系统设置
@@ -74,10 +80,6 @@ export const AddAppUpdate = () => {
             event.sender.send(ACTION_KEY.updateMessage, info);
         };
     });
-    // 设置更新地址
-    autoUpdater.setFeedURL(UPDATE_URL);
-    autoUpdater.autoDownload = false;
-    autoUpdater.autoInstallOnAppQuit = true;
     // 出错
     autoUpdater.on('error', (err) => {
         sendUpdateMessage({

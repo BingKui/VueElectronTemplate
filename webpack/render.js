@@ -131,7 +131,7 @@ const renderConfig = {
                     loader: 'url-loader',
                     query: {
                         limit: 10000,
-                        publicPath: './',
+                        publicPath: '../',
                         name: '[folder]/[name].[ext]'
                     }
                 }
