@@ -127,6 +127,7 @@
     "electron": "^17.1.2",
     "electron-builder": "^22.7.0",
     "electron-store": "^8.0.1",
+    "electron-updater": "^5.0.1",
     "eslint": "^5.16.0",
     "eslint-loader": "^2.1.2",
     "eslint-plugin-vue": "^5.2.2",
