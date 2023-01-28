@@ -15,14 +15,14 @@ export const MenuList = [{
     icon: 'ios-home-outline', // 图标
     name: '主页', // 菜单名称
     router: 'main-home', // 菜单路由
-}, {
-    icon: 'ios-albums-outline', // 图标
-    name: '功能演示', // 菜单名称
-    router: 'demo', // 菜单路由
-}, {
-    icon: 'ios-settings-outline', // 图标
-    name: '设置', // 菜单名称
-    router: 'setting', // 菜单路由
+// }, {
+//     icon: 'ios-albums-outline', // 图标
+//     name: '功能演示', // 菜单名称
+//     router: 'demo', // 菜单路由
+// }, {
+//     icon: 'ios-settings-outline', // 图标
+//     name: '设置', // 菜单名称
+//     router: 'setting', // 菜单路由
 }];
 
 export const MenuRouter = [{

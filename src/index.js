@@ -1,11 +1,10 @@
-import Vue from 'vue';
-import Tpl from './index.vue';
-import store from '@store/index';
+import { createApp } from 'vue';
+import Tpl from './Tpl.vue';
 import router from '@router/index';
-import './styles/theme.less';
+import './styles/main.less';
+import 'view-ui-plus/dist/styles/viewuiplus.css';
 
-new Vue({
-    router,
-    store,
-    render: h => h(Tpl),
-}).$mount('#app');
+const app = createApp(Tpl);
+app.use(router);
+
+app.mount('#app');

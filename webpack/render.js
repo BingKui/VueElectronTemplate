@@ -5,7 +5,7 @@ const pkg = require('../package.json');
 // html 插件
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 // vue loader 插件
-const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const VueLoaderPlugin = require('vue-loader/dist/pluginWebpack4').default;
 // 文件 copy 插件
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 // js压缩、优化插件

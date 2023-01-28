@@ -11,9 +11,9 @@ const systemSetting = new Store();
 import { isMac } from './utils';
 
 // 设置更新地址
-autoUpdater.setFeedURL({ url: UPDATE_URL, provider: 'generic' });
-autoUpdater.autoDownload = false;
-autoUpdater.autoInstallOnAppQuit = true;
+// autoUpdater.setFeedURL({ url: UPDATE_URL, provider: 'generic' });
+// autoUpdater.autoDownload = false;
+// autoUpdater.autoInstallOnAppQuit = true;
 
 /**
  * 处理系统设置

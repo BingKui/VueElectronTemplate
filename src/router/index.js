@@ -1,11 +1,8 @@
-import Vue from 'vue';
-import Router from 'vue-router';
 import { MenuRouter } from './menu';
+import { createRouter, createWebHashHistory } from 'vue-router';
 
-Vue.use(Router);
-
-const router = new Router({
-    // mode: 'history',
+const router = createRouter({
+    history: createWebHashHistory(),
     routes: [
         ...MenuRouter,
     ],
