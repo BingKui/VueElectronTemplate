@@ -1,0 +1,29 @@
+@import "./reset.less";
+@import "./color.less";
+@import "./flex.less";
+@import "./font.less";
+@import "./gap.less";
+@import "./overwrite.less";
+
+
+.border-radius {
+    border-radius: @border-radius;
+}
+
+.v-body, body, html {
+    background-color: @background-color;
+    font-family: @font-family;
+}
+.v-body {
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+}
+
+.drag-element {
+    -webkit-app-region: drag;
+}
+
+.dragno-element {
+    -webkit-app-region: none;
+}
