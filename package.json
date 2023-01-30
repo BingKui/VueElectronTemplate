@@ -10,6 +10,22 @@
   },
   "author": "康兵奎",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BingKui/VueElectronTemplate.git"
+  },
+  "keywords": [
+    "Vue3",
+    "Electron",
+    "Pinia",
+    "Vue-Router",
+    "Template",
+    "Vite"
+  ],
+  "bugs": {
+    "url": "https://github.com/BingKui/VueElectronTemplate/issues"
+  },
+  "homepage": "https://github.com/BingKui/VueElectronTemplate#readme",
   "dependencies": {
     "@icon-park/vue-next": "^1.4.2",
     "axios": "^1.2.5",
