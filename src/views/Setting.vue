@@ -34,7 +34,7 @@ import { Switch, Button } from 'view-ui-plus';
 import { storeToRefs } from 'pinia';
 import { checkAppUpdate } from '@/feature/update';
 import { useSettingStore } from '@/stores/setting';
-import { onMounted } from '_vue@3.2.45@vue';
+import { onMounted } from 'vue';
 
 const settingStore = useSettingStore();
 const { autoStart, autoUpdate, dockShow } = storeToRefs(settingStore);
