@@ -1,13 +1,12 @@
-import { UPDATE_ACTION_KEY } from './../src/constants/channel';
 import path from 'path';
 import { app, globalShortcut, ipcMain, Menu } from 'electron';
 import { autoUpdater } from 'electron-updater';
 const Datastore = require('nedb')
 const Store = require('electron-store');
-import { ACTION_KEY, DB_ACTION_KEY, UPDATE_MESSAGE, UPDATE_MESSAGE_TYPE } from './channel';
+import { ACTION_KEY, DB_ACTION_KEY, UPDATE_MESSAGE, UPDATE_MESSAGE_TYPE, UPDATE_ACTION_KEY } from './channel';
 import { mainEvent } from './utils';
 import { isMac, isDev, BASE_SETTING, UPDATE_URL } from './constants';
-const systemSetting = new Store();
+const systemSetting = 新建 Store();
 
 // 设置更新地址
 autoUpdater.setFeedURL({ url: UPDATE_URL, provider: 'generic' });
@@ -31,7 +30,7 @@ export const dealUserSetting = (setting) => {
         openAsHidden: true,
     });
     if (app.dock) {
-        dockShow ? app.dock.show() : app.dock.hide();
+        dockShow ? app.dock。显示() : app.dock。隐藏();
     }
 };
 
